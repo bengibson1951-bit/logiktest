@@ -1,18 +1,18 @@
 # Logikträning — design
 
-Date: 2026-10-26 · Owner: Ben · User: Erika (Ben's partner, Swedish)
+Date: 2026-10-26 · Owner: Ben · User: the candidate (Swedish)
 
 ## 1. Intent and the why
 
-Erika is in Unionen's interview process. Before the next interview she must take the
+the candidate is in Unionen's interview process. Before the next interview she must take the
 **JobMatch Logic** test (JobMatch Sweden AB) via a link, **deadline Thursday 2026-10-29 kl 12:00**.
 She does fine on this kind of test but is **slow**, and JobMatch Logic is a speed test, so being slow costs her points.
 
 We are building a small private training web app that simulates JobMatch Logic. It
 **records the time spent on every question and the type of every question**, so Ben,
-Erika and Claude can see exactly where her time and errors go and aim the next practice at those areas.
+the candidate and Claude can see exactly where her time and errors go and aim the next practice at those areas.
 
-Success means that by Wednesday evening Erika has done several timed rounds. Her **answer pace
+Success means that by Wednesday evening the candidate has done several timed rounds. Her **answer pace
 (Svarshastighet)** has gone up without her accuracy dropping, and she goes into the real test
 knowing her weak question types and how to pace herself and when to skip.
 
@@ -31,7 +31,7 @@ knowing her weak question types and how to pace herself and when to skip.
     - **Språklig förmåga:** word understanding, grammar and vocabulary.
     - **Komplex differentiering:** multi-step reasoning with several variables ("Om Lisa står till höger om Marko, som står till vänster om Erik, var står Sara?").
 - Taken in Swedish, on her **laptop**, in a browser.
-- Unknown: the exact answer format, whether questions can be skipped or revisited, and whether the five types are mixed or in blocks. We assume **multiple choice, types mixed, skipping allowed**. The app tells Erika to read the real test's instructions carefully.
+- Unknown: the exact answer format, whether questions can be skipped or revisited, and whether the five types are mixed or in blocks. We assume **multiple choice, types mixed, skipping allowed**. The app tells the candidate to read the real test's instructions carefully.
 
 Source: https://www.jobmatchtalent.com/wp-content/uploads/2018/11/JML-sample-sw.pdf (2018 guide; it may have changed).
 
@@ -54,7 +54,7 @@ Source: https://www.jobmatchtalent.com/wp-content/uploads/2018/11/JML-sample-sw.
 
 - The JobMatch Talent personality test.
 - Any AI calls or API keys in the app. New questions are written by Claude in conversation and added to the bank, the same pattern as Pluggquiz.
-- User accounts or multiple users. There is one user, Erika.
+- User accounts or multiple users. There is one user, the candidate.
 - A phone layout. It must not break on a phone, but the target is a laptop.
 - Copying real JobMatch questions. We only imitate the published question types.
 - An offline PWA or app-store packaging.
@@ -166,7 +166,7 @@ These thresholds and formulas are starting points, and the builder may tune them
 - One migration file lives in this repo (`supabase/001_logiktest.sql`), not in DigitalContentNu's migrations folder.
 - **RLS is enabled on every `lt_` table, with no policies for `anon` or `authenticated`.**
 - All browser access goes through `SECURITY DEFINER` RPC functions that check a **passphrase**. The passphrase hash is stored in `lt_config`.
-- The browser holds only the project URL and the **anon key**, which are already public by design, plus the passphrase Erika types once. The passphrase is remembered in `localStorage`.
+- The browser holds only the project URL and the **anon key**, which are already public by design, plus the passphrase the candidate types once. The passphrase is remembered in `localStorage`.
 
 **Tables:**
 - `lt_questions(id text pk, area, subtype, difficulty, source 'bank'|'generated', generator, seed, prompt, options jsonb, correct int, explanation, figure jsonb, created_at)`
@@ -203,7 +203,7 @@ These thresholds and formulas are starting points, and the builder may tune them
 - The Supabase client is called with plain `fetch` to `/rest/v1/rpc/...`, so no SDK is needed.
 - Pure logic lives in testable modules (`engine.js`, `metrics.js`, `generators/*.js`, `bank.js`), tested with `node:test` via `npm test`.
 - New folder `Bright Blue Project - Event/logiktest` as its own git repo. Preview entry `logiktest` on **port 4331** in the parent `.claude/launch.json`.
-- Hosted on GitHub Pages: `bengibson1951-bit/logiktest`. The URL is shared only with Erika.
+- Hosted on GitHub Pages: `bengibson1951-bit/logiktest`. The URL is shared only with the candidate.
 - The repo is public, like the other apps. The bank being visible is acceptable, but no keys beyond the anon key go in it.
 - Laptop-first layout: large readable question area, keyboard shortcuts shown, a calm neutral visual style, and a countdown that is visible but not alarming.
 
@@ -218,7 +218,7 @@ These thresholds and formulas are starting points, and the builder may tune them
    - Träna svagheter, Ämnesdrill, trend view
    - the bank expanded to its full size
    - the first round of Claude-written targeted questions, based on her data
-3. Erika should take the **real test by Wednesday evening or Thursday morning at the latest**, well before 12:00.
+3. the candidate should take the **real test by Wednesday evening or Thursday morning at the latest**, well before 12:00.
 
 ## 12. Left to the builder
 

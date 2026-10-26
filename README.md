@@ -1,6 +1,6 @@
 # Logikträning
 
-Private practice app for the **JobMatch Logic** test (80 mixed questions, 30 min). Built for Erika's
+Private practice app for the **JobMatch Logic** test (80 mixed questions, 30 min). Built for the candidate's
 Unionen application. Swedish UI, laptop first. Times every answer and tags it with its question type,
 so slow and weak spots show up.
 

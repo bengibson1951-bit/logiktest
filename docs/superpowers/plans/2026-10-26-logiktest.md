@@ -2,7 +2,7 @@
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**Goal:** A private, Swedish, laptop-first web app that simulates JobMatch Logic. It records every answer with its question type and time to the millisecond in Supabase, and analyses where Erika is slow or weak.
+**Goal:** A private, Swedish, laptop-first web app that simulates JobMatch Logic. It records every answer with its question type and time to the millisecond in Supabase, and analyses where the candidate is slow or weak.
 
 **Architecture:**
 - A static site with ES modules and no build step, hosted on GitHub Pages.
@@ -398,7 +398,7 @@ logiktest/
 - [ ] **Step 5:** Commit and push with message `docs: readme and stats cli`.
 
 **After Task 8 (Wednesday):**
-1. Run `stats.js` on Erika's data.
+1. Run `stats.js` on the candidate's data.
 2. Writer agents add targeted questions for her flagged subtypes.
 3. Run blind-check, then validate.
 4. Commit and push.
