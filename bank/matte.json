@@ -933,5 +933,209 @@
     ],
     "correct": 4,
     "explanation": "Snabbväg: avståndet minskar med 80 + 60 = 140 km/h, och 280 / 140 = 2 h. De möts kl. 12.00."
+  },
+  {
+    "id": "matte-procent_brak-021",
+    "area": "matte",
+    "subtype": "procent_brak",
+    "difficulty": 4,
+    "source": "bank",
+    "prompt": "En aktie stiger med 50 % ena dagen och faller med 40 % nästa dag. Hur har aktiens värde förändrats totalt?",
+    "options": [
+      "Ökat med 10 %",
+      "Oförändrat",
+      "Minskat med 10 %",
+      "Minskat med 20 %",
+      "Minskat med 6 %"
+    ],
+    "correct": 2,
+    "explanation": "Snabbväg: multiplicera förändringsfaktorerna, 1,5 · 0,6 = 0,9. Värdet har alltså minskat med 10 %. Procentsatser får inte adderas."
+  },
+  {
+    "id": "matte-procent_brak-022",
+    "area": "matte",
+    "subtype": "procent_brak",
+    "difficulty": 4,
+    "source": "bank",
+    "prompt": "Priset på en vara sänks först med 20 % och höjs sedan med 5 %. Nu kostar varan 504 kr. Vad kostade den från början?",
+    "options": [
+      "600 kr",
+      "579,60 kr",
+      "620 kr",
+      "560 kr",
+      "604,80 kr"
+    ],
+    "correct": 0,
+    "explanation": "Snabbväg: total förändringsfaktor 0,8 · 1,05 = 0,84. Ursprungspriset är 504 / 0,84 = 600 kr. Att lägga på 15 % på 504 kr ger fel svar."
+  },
+  {
+    "id": "matte-procent_brak-023",
+    "area": "matte",
+    "subtype": "procent_brak",
+    "difficulty": 4,
+    "source": "bank",
+    "prompt": "Förhållandet A:B är 2:3 och förhållandet B:C är 4:5. 1 400 kr delas mellan A, B och C i det sammanslagna förhållandet. Hur mycket får C?",
+    "options": [
+      "700 kr",
+      "480 kr",
+      "560 kr",
+      "600 kr",
+      "525 kr"
+    ],
+    "correct": 3,
+    "explanation": "Snabbväg: gör B lika i båda förhållandena, A:B = 8:12 och B:C = 12:15, alltså A:B:C = 8:12:15 (35 delar). En del = 1 400 / 35 = 40 kr, så C får 15 · 40 = 600 kr."
+  },
+  {
+    "id": "matte-procent_brak-024",
+    "area": "matte",
+    "subtype": "procent_brak",
+    "difficulty": 4,
+    "source": "bank",
+    "prompt": "2/3 av eleverna i en klass är tjejer. 3/4 av tjejerna och 1/2 av killarna spelar ett instrument. Hur stor andel av hela klassen spelar inte något instrument?",
+    "options": [
+      "3/8",
+      "1/3",
+      "2/3",
+      "5/12",
+      "1/4"
+    ],
+    "correct": 1,
+    "explanation": "Snabbväg: spelande tjejer = 2/3 · 3/4 = 1/2 och spelande killar = 1/3 · 1/2 = 1/6 av klassen. Totalt spelar 1/2 + 1/6 = 2/3, så 1/3 spelar inte."
+  },
+  {
+    "id": "matte-procent_brak-025",
+    "area": "matte",
+    "subtype": "procent_brak",
+    "difficulty": 4,
+    "source": "bank",
+    "prompt": "Andelen arbetslösa i en kommun sjunker från 8 % till 6 %. Hur stor är minskningen?",
+    "options": [
+      "2 % (2 procentenheter)",
+      "33 % (2 procentenheter)",
+      "25 % (25 procentenheter)",
+      "2 % (25 procentenheter)",
+      "25 % (2 procentenheter)"
+    ],
+    "correct": 4,
+    "explanation": "Snabbväg: skillnaden 8 − 6 = 2 är procentenheter. Den relativa minskningen är 2 / 8 = 25 %. Dela med startvärdet 8, inte med 6."
+  },
+  {
+    "id": "matte-procent_brak-026",
+    "area": "matte",
+    "subtype": "procent_brak",
+    "difficulty": 4,
+    "source": "bank",
+    "prompt": "En stads befolkning ökar med 10 % per år. Efter 2 år har staden 60 500 invånare. Hur många invånare hade staden från början?",
+    "options": [
+      "48 400",
+      "54 450",
+      "50 000",
+      "50 417",
+      "49 005"
+    ],
+    "correct": 2,
+    "explanation": "Snabbväg: förändringsfaktor 1,1² = 1,21, och 60 500 / 1,21 = 50 000. Att dra av 20 % eller dela med 1,2 ger fel svar."
+  },
+  {
+    "id": "matte-textuppgift-036",
+    "area": "matte",
+    "subtype": "textuppgift",
+    "difficulty": 4,
+    "source": "bank",
+    "prompt": "Kran A fyller en pool på 6 h och kran B på 3 h. Ett avlopp tömmer den fulla poolen på 4 h. Hur lång tid tar det att fylla den tomma poolen om båda kranarna och avloppet är öppna?",
+    "options": [
+      "2 h",
+      "4 h",
+      "5 h",
+      "3 h",
+      "4 h 30 min"
+    ],
+    "correct": 1,
+    "explanation": "Snabbväg: räkna i tolftedelar per timme: A 2/12, B 4/12, avlopp −3/12. Netto 3/12 = 1/4 pool per timme, alltså 4 h."
+  },
+  {
+    "id": "matte-textuppgift-037",
+    "area": "matte",
+    "subtype": "textuppgift",
+    "difficulty": 4,
+    "source": "bank",
+    "prompt": "Du kör 120 km i 60 km/h och därefter 90 km i 90 km/h. Vad är medelhastigheten för hela sträckan?",
+    "options": [
+      "75 km/h",
+      "72 km/h",
+      "68 km/h",
+      "70 km/h",
+      "65 km/h"
+    ],
+    "correct": 3,
+    "explanation": "Snabbväg: första delen tar 2 h och andra 1 h. Totalt 210 km på 3 h = 70 km/h. Medelvärdet av hastigheterna (75 km/h) är fel."
+  },
+  {
+    "id": "matte-textuppgift-038",
+    "area": "matte",
+    "subtype": "textuppgift",
+    "difficulty": 4,
+    "source": "bank",
+    "prompt": "Hur många liter 40-procentig saftlösning ska blandas med 6 liter 10-procentig lösning för att blandningen ska bli 20-procentig?",
+    "options": [
+      "3 liter",
+      "6 liter",
+      "4 liter",
+      "2 liter",
+      "4,5 liter"
+    ],
+    "correct": 0,
+    "explanation": "Snabbväg: 10 % ligger 10 enheter under målet och 40 % ligger 20 över. Mängderna ska stå i omvänt förhållande, 2:1, så 6 / 2 = 3 liter."
+  },
+  {
+    "id": "matte-textuppgift-039",
+    "area": "matte",
+    "subtype": "textuppgift",
+    "difficulty": 4,
+    "source": "bank",
+    "prompt": "Anna är tre gånger så gammal som sin son. Om 12 år är hon dubbelt så gammal som han. Hur gammal är Anna nu?",
+    "options": [
+      "12 år",
+      "48 år",
+      "30 år",
+      "42 år",
+      "36 år"
+    ],
+    "correct": 4,
+    "explanation": "Snabbväg: sonen = s. Då gäller 3s + 12 = 2(s + 12), alltså s = 12. Anna är 3 · 12 = 36 år."
+  },
+  {
+    "id": "matte-textuppgift-040",
+    "area": "matte",
+    "subtype": "textuppgift",
+    "difficulty": 4,
+    "source": "bank",
+    "prompt": "En cyklist startar kl. 9.00 och cyklar i 18 km/h. En bil startar från samma plats kl. 9.40 och kör samma väg i 63 km/h. När hinner bilen ikapp cyklisten?",
+    "options": [
+      "kl. 9.51",
+      "kl. 10.00",
+      "kl. 9.56",
+      "kl. 9.52",
+      "kl. 10.04"
+    ],
+    "correct": 2,
+    "explanation": "Snabbväg: cyklistens försprång är 18 · 2/3 = 12 km. Bilen knappar in 63 − 18 = 45 km/h, och 12 / 45 h = 16 min. Bilen kommer ikapp kl. 9.56."
+  },
+  {
+    "id": "matte-textuppgift-041",
+    "area": "matte",
+    "subtype": "textuppgift",
+    "difficulty": 4,
+    "source": "bank",
+    "prompt": "Anna och Björn gör ett jobb tillsammans på 6 h. Anna ensam skulle behöva 10 h. Hur lång tid skulle Björn behöva ensam?",
+    "options": [
+      "4 h",
+      "16 h",
+      "8 h",
+      "15 h",
+      "12 h"
+    ],
+    "correct": 3,
+    "explanation": "Snabbväg: Björn hinner 1/6 − 1/10 = 5/30 − 3/30 = 2/30 = 1/15 av jobbet per timme, alltså 15 h."
   }
 ]

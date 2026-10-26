@@ -46,6 +46,7 @@ function cellBody(cell, s) {
     const P = [[m, m], [s / 2, m], [e, m], [e, s / 2], [e, e], [s / 2, e], [m, e], [m, s / 2]];
     let out = `<rect x="${m}" y="${m}" width="${e - m}" height="${e - m}" fill="none" stroke="currentColor" stroke-opacity="0.35" stroke-width="1.5"/>`;
     for (const [x, y] of P) out += `<circle cx="${x}" cy="${y}" r="${s * 0.025}" fill="currentColor" opacity="0.25"/>`;
+    if (cell.pos2 != null) out += `<circle cx="${P[cell.pos2][0]}" cy="${P[cell.pos2][1]}" r="${s * 0.1}" fill="none" stroke="currentColor" stroke-width="2.5"/>`;
     if (cell.pos != null) out += `<circle cx="${P[cell.pos][0]}" cy="${P[cell.pos][1]}" r="${s * 0.075}" fill="currentColor"/>`;
     if (cell.arrow != null) {
       const c = s / 2, L = s * 0.2;

@@ -9,7 +9,12 @@ export const MODES = {
   quick: { count: 20, timeLimitS: 450, label: "Snabbrunda" },
   weak: { count: 20, timeLimitS: null, label: "Träna svagheter" },
   drill: { count: 15, timeLimitS: null, label: "Ämnesdrill" },
+  challenge: { count: 20, timeLimitS: 600, label: "Utmaning" },
 };
+
+// Utmaning: only the hardest level, weighted toward the language-independent areas
+// that the adaptive JobMatch LogiQ escalates in.
+const CHALLENGE_QUOTA = { uppfattning: 6, matte: 6, komplex: 4, logik: 4 };
 
 export function buildRound({ mode, bank, seed, subtypeWeights = null, filter = null, recentIds = new Set() }) {
   const rand = mulberry32(seed);
@@ -31,8 +36,9 @@ export function buildRound({ mode, bank, seed, subtypeWeights = null, filter = n
     if (!free.length) return null;
     const fresh = free.filter((q) => !recentIds.has(q.id));
     const pool = fresh.length ? fresh : free;
-    const atLevel = pool.filter((q) => q.difficulty === difficulty);
-    const list = atLevel.length ? atLevel : pool;
+    // Nearest available difficulty, so a missing level degrades gracefully.
+    const gap = Math.min(...pool.map((q) => Math.abs(q.difficulty - difficulty)));
+    const list = pool.filter((q) => Math.abs(q.difficulty - difficulty) === gap);
     const q = list[Math.floor(rand() * list.length)];
     used.add(q.id);
     return q;
@@ -49,20 +55,36 @@ export function buildRound({ mode, bank, seed, subtypeWeights = null, filter = n
     return null;
   }
 
-  const levelFor = (i, n) => 1 + Math.min(2, Math.floor((i * 3) / n));
+  const levelFor = (i, n, levels = 3) => 1 + Math.min(levels - 1, Math.floor((i * levels) / n));
   const out = [];
 
   if (mode === "full" || mode === "quick") {
+    // The full test ends with a hard quarter (level 4), like a test that gets harder towards the end.
+    const levels = mode === "full" ? 4 : 3;
     const perArea = count / AREAS.length;
     for (const area of AREAS) {
       const subs = shuffle(rand, subtypesOf(area).filter(available));
       for (let i = 0; i < perArea; i++) {
-        const q = takeWithFallback(subs[i % subs.length], levelFor(i, perArea));
+        const q = takeWithFallback(subs[i % subs.length], levelFor(i, perArea, levels));
         if (q) out.push(q);
       }
     }
-    // Difficulty rises gently: easy third first, then medium, then hard; shuffled within each.
-    return [1, 2, 3].flatMap((d) => shuffle(rand, out.filter((q) => q.difficulty === d)));
+    // Difficulty rises gently; shuffled within each level.
+    return [1, 2, 3, 4].flatMap((d) => shuffle(rand, out.filter((q) => q.difficulty === d)));
+  }
+
+  if (mode === "challenge") {
+    const hasHard = (st) => SUBTYPES[st].source === "generated" || (bankBy[st] ?? []).some((q) => q.difficulty === 4);
+    for (const [area, n] of Object.entries(CHALLENGE_QUOTA)) {
+      let subs = subtypesOf(area).filter(hasHard);
+      if (!subs.length) subs = subtypesOf(area).filter(available);
+      subs = shuffle(rand, subs);
+      for (let i = 0; i < n; i++) {
+        const q = takeWithFallback(subs[i % subs.length], 4);
+        if (q) out.push(q);
+      }
+    }
+    return shuffle(rand, out);
   }
 
   let subs;

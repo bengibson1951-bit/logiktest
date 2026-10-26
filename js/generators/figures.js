@@ -25,7 +25,8 @@ export function matris(seed, difficulty) {
   for (const a of ATTRS) {
     const vals = shuffle(rand, DOMAINS[a]).slice(0, 3);
     let mode = "const";
-    if (varying.includes(a)) mode = a === varying[0] ? "latin" : pick(rand, ["latin", "row", "col"]);
+    // Level 4 avoids the easy row-constant rule.
+    if (varying.includes(a)) mode = a === varying[0] ? "latin" : pick(rand, difficulty >= 4 ? ["latin", "col"] : ["latin", "row", "col"]);
     spec[a] = { mode, vals, shift: randInt(rand, 1, 2) };
   }
   const cellAt = (r, c) => {
@@ -41,6 +42,8 @@ export function matris(seed, difficulty) {
   for (const a of ATTRS) {
     for (const v of DOMAINS[a]) {
       if (v === answer[a]) continue;
+      // Level 4: every distractor uses only values that appear in the grid, so none is obviously wrong.
+      if (difficulty >= 4 && !spec[a].vals.includes(v)) continue;
       (varying.includes(a) ? near : far).push({ ...answer, [a]: v });
     }
   }
@@ -68,7 +71,14 @@ export function figurserie(seed, difficulty) {
   } else {
     k = pick(rand, [3, 7, 5]); da = pick(rand, [45, 135, 315]);
   }
-  const frame = (i) => ({ t: "ring", pos: (p0 + i * k) % 8, arrow: (a0 + i * da) % 360 });
+  // Level 4 adds a hollow second marker moving its own way.
+  const k2 = difficulty >= 4 ? pick(rand, [6, 2, 3]) : 0;
+  const q0 = (p0 + randInt(rand, 2, 6)) % 8;
+  const frame = (i) => {
+    const f = { t: "ring", pos: (p0 + i * k) % 8, arrow: (a0 + i * da) % 360 };
+    if (difficulty >= 4) f.pos2 = (q0 + i * k2) % 8;
+    return f;
+  };
   const items = [0, 1, 2, 3].map(frame);
   const answer = frame(4);
   const last = items[3];
@@ -80,8 +90,16 @@ export function figurserie(seed, difficulty) {
     { ...answer, arrow: (answer.arrow + 315) % 360 },
     { ...answer, arrow: (answer.arrow + 180) % 360 },
     { ...answer, arrow: last.arrow },
-    { t: "ring", pos: (answer.pos + 4) % 8, arrow: (answer.arrow + 90) % 360 },
+    { ...answer, pos: (answer.pos + 4) % 8, arrow: (answer.arrow + 90) % 360 },
   ];
+  if (difficulty >= 4) {
+    cands.push(
+      { ...answer, pos2: (answer.pos2 + 1) % 8 },
+      { ...answer, pos2: (answer.pos2 + 7) % 8 },
+      { ...answer, pos2: last.pos2 },
+      { ...answer, pos: answer.pos2, pos2: answer.pos },
+    );
+  }
   const seen = new Set([cellKey(answer)]);
   const distractors = [];
   for (const c of shuffle(rand, cands)) {
@@ -96,6 +114,7 @@ export function figurserie(seed, difficulty) {
   else parts.push("pricken står still");
   if (da) parts.push(`pilen vrids ${da > 180 ? 360 - da : da}° ${da > 180 ? "moturs" : "medurs"} varje gång`);
   else parts.push("pilen står still");
+  if (k2) parts.push(`den ihåliga ringen flyttar ${k2 > 4 ? 8 - k2 : k2} steg ${k2 > 4 ? "moturs" : "medurs"}`);
   return makeQuestion({
     name: "figurserie", seed, difficulty, rand,
     prompt: "Vilken figur kommer härnäst i serien?",
@@ -107,7 +126,7 @@ export function figurserie(seed, difficulty) {
 
 export function rotation(seed, difficulty) {
   const rand = mulberry32(seed * 15485863 + 5);
-  const n = difficulty === 1 ? 4 : difficulty === 2 ? 5 : 6;
+  const n = [4, 5, 6, 7][difficulty - 1];
   const shape = randomPolyomino(rand, n);
   const answer = { t: "poly", cells: rotations(shape)[randInt(rand, 1, 3)] };
   const distractors = shuffle(rand, rotations(mirror(shape))).slice(0, 3).map((cells) => ({ t: "poly", cells }));
@@ -122,7 +141,7 @@ export function rotation(seed, difficulty) {
 
 export function udda_figur(seed, difficulty) {
   const rand = mulberry32(seed * 32452843 + 9);
-  const n = difficulty === 1 ? 4 : difficulty === 2 ? 5 : 6;
+  const n = [4, 5, 6, 7][difficulty - 1];
   const shape = randomPolyomino(rand, n);
   const answer = { t: "poly", cells: pick(rand, rotations(mirror(shape))) };
   const distractors = rotations(shape).map((cells) => ({ t: "poly", cells }));

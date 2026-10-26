@@ -72,3 +72,20 @@ test("recent ids avoided while fresh ones remain", () => {
     assert.ok(qs.every((q) => fresh.includes(q.id)), `seed ${seed}`);
   }
 });
+
+test("challenge: 20 hard questions, no language area, generated ones at level 4", () => {
+  const bank = fixtureBank();
+  bank.push({ ...bank.find((q) => q.subtype === "placering"), id: "komplex-placering-hard", difficulty: 4 });
+  const qs = buildRound({ mode: "challenge", bank, seed: 9 });
+  assert.equal(qs.length, 20);
+  assert.ok(qs.every((q) => q.area !== "sprak"));
+  assert.equal(qs.filter((q) => q.area === "uppfattning").length, 6);
+  assert.ok(qs.filter((q) => q.source === "generated").every((q) => q.difficulty === 4));
+  assert.ok(qs.some((q) => q.id === "komplex-placering-hard"));
+});
+
+test("full test ends with level-4 questions", () => {
+  const qs = buildRound({ mode: "full", bank: fixtureBank(), seed: 4 });
+  assert.ok(qs.slice(-10).every((q) => q.difficulty >= 3));
+  assert.ok(qs.some((q) => q.difficulty === 4));
+});

@@ -12,7 +12,7 @@ import { roundMetrics, subtypeStats, flags, weights, targetSeconds, FLAG_LABELS,
 import { renderFigure, renderCell } from "./svg.js";
 import { load, save, setResume, clearResume, addRecent } from "./store.js";
 
-const CLIENT_VERSION = "1.1.0";
+const CLIENT_VERSION = "1.2.0";
 const SKIP_NUDGE_MS = 30000;
 const app = document.getElementById("app");
 const db = createDb({ url: SUPABASE_URL, anonKey: SUPABASE_ANON_KEY });
@@ -123,6 +123,7 @@ function showHome() {
       <button class="big" data-mode="quick"><strong>Snabbrunda</strong><span class="muted small">20 frågor · 7½ min · daglig uppvärmning</span></button>
       <button class="big" data-mode="weak"><strong>Träna svagheter</strong><span class="muted small">20 frågor från dina långsammaste och svagaste typer</span></button>
       <button class="big" id="drill"><strong>Ämnesdrill</strong><span class="muted small">Välj en frågetyp och nöt den</span></button>
+      <button class="big" data-mode="challenge"><strong>Utmaning</strong><span class="muted small">20 svåra frågor · 10 min · figurer, tal och avancerad logik</span></button>
     </div>
     <p style="margin-top:12px"><button class="link" id="stats">Statistik och utveckling →</button></p>
     <div class="card">

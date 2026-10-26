@@ -11,7 +11,7 @@ export function validateQuestion(q) {
   const st = SUBTYPES[q.subtype];
   if (!st) return [`unknown subtype ${q.subtype}`];
   if (st.area !== q.area) errs.push(`area ${q.area} != ${st.area}`);
-  if (![1, 2, 3].includes(q.difficulty)) errs.push("difficulty not 1-3");
+  if (![1, 2, 3, 4].includes(q.difficulty)) errs.push("difficulty not 1-4");
   if (q.source !== "bank") errs.push("source must be bank");
   if (!Array.isArray(q.options)) return [...errs, "options not array"];
   if (q.options.length !== st.optionCount) errs.push(`expected ${st.optionCount} options, got ${q.options.length}`);

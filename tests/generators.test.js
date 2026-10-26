@@ -10,7 +10,7 @@ const k = (x) => JSON.stringify(x);
 
 test("every generator: distinct options, right count, deterministic", () => {
   for (const name of GENERATORS) {
-    for (const d of [1, 2, 3]) {
+    for (const d of [1, 2, 3, 4]) {
       for (let seed = 1; seed <= SEEDS; seed++) {
         const q = generate(name, seed, d);
         assert.equal(q.options.length, SUBTYPES[name].optionCount, `${name} d${d} s${seed} count`);
@@ -25,7 +25,7 @@ test("every generator: distinct options, right count, deterministic", () => {
 });
 
 test("rotation: exactly one option is a rotation of the target", () => {
-  for (const d of [1, 2, 3]) for (let s = 1; s <= SEEDS; s++) {
+  for (const d of [1, 2, 3, 4]) for (let s = 1; s <= SEEDS; s++) {
     const q = generate("rotation", s, d);
     const hits = q.options.filter((o) => sameUnderRotation(o.cells, q.figure.cell.cells));
     assert.equal(hits.length, 1);
@@ -34,7 +34,7 @@ test("rotation: exactly one option is a rotation of the target", () => {
 });
 
 test("udda_figur: exactly one option differs from the other four", () => {
-  for (const d of [1, 2, 3]) for (let s = 1; s <= SEEDS; s++) {
+  for (const d of [1, 2, 3, 4]) for (let s = 1; s <= SEEDS; s++) {
     const q = generate("udda_figur", s, d);
     const odd = q.options.filter((o, i) => q.options.every((p, j) => i === j || !sameUnderRotation(o.cells, p.cells)));
     assert.equal(odd.length, 1);
@@ -60,14 +60,14 @@ function fitsMatrix(cells, opt) {
 }
 
 test("matris: answer fits the rule, no distractor does", () => {
-  for (const d of [1, 2, 3]) for (let s = 1; s <= SEEDS; s++) {
+  for (const d of [1, 2, 3, 4]) for (let s = 1; s <= SEEDS; s++) {
     const q = generate("matris", s, d);
     q.options.forEach((o, i) => assert.equal(fitsMatrix(q.figure.cells, o), i === q.correct, `d${d} s${s} opt${i}`));
   }
 });
 
 test("figurserie: exactly the predicted next frame is correct", () => {
-  for (const d of [1, 2, 3]) for (let s = 1; s <= SEEDS; s++) {
+  for (const d of [1, 2, 3, 4]) for (let s = 1; s <= SEEDS; s++) {
     const q = generate("figurserie", s, d);
     const it = q.figure.items;
     const kp = (it[1].pos - it[0].pos + 8) % 8, ka = (it[1].arrow - it[0].arrow + 360) % 360;
@@ -76,6 +76,11 @@ test("figurserie: exactly the predicted next frame is correct", () => {
       assert.equal((it[i].arrow - it[i - 1].arrow + 360) % 360, ka);
     }
     const pred = { t: "ring", pos: (it[3].pos + kp) % 8, arrow: (it[3].arrow + ka) % 360 };
+    if (it[0].pos2 != null) {
+      const k2 = (it[1].pos2 - it[0].pos2 + 8) % 8;
+      for (let i = 2; i < 4; i++) assert.equal((it[i].pos2 - it[i - 1].pos2 + 8) % 8, k2);
+      pred.pos2 = (it[3].pos2 + k2) % 8;
+    }
     const hits = q.options.map((o, i) => (k(o) === k(pred) ? i : -1)).filter((i) => i >= 0);
     assert.deepEqual(hits, [q.correct]);
   }
@@ -90,12 +95,24 @@ test("number generators: correct option is the computed answer", () => {
     const xq = Number(q.prompt.match(/Vad blir (−?\d+)/)[1].replace("−", "-"));
     assert.equal(q.options[q.correct], String(a * xq + b).replace("-", "−"));
   }
-  for (let s = 1; s <= 200; s++) for (const d of [1, 2, 3]) {
+  for (let s = 1; s <= 200; s++) for (const d of [1, 2, 3, 4]) {
     const q = generate("huvudrakning", s, d);
     const expr = q.prompt.replace("Räkna i huvudet: ", "").replace(" = ?", "")
+      .replace(/(\d+),(\d+) % av /, "$1.$2/100*").replace(" % av ", "/100*").replaceAll(" av ", "*")
       .replaceAll("×", "*").replaceAll("÷", "/").replaceAll("−", "-");
-    const val = Function(`return (${expr})`)();
+    const val = Math.round(Function(`return (${expr})`)() * 1e6) / 1e6;
     assert.equal(q.options[q.correct], String(val).replace("-", "−"));
+  }
+});
+
+test("talsamband level 4: answer matches the quadratic through the three points", () => {
+  for (let s = 1; s <= 300; s++) {
+    const q = generate("talsamband", s, 4);
+    const num = (x) => Number(x.replace("−", "-"));
+    const pts = [...q.prompt.matchAll(/(−?\d+) → (−?\d+)/g)].map((m) => [num(m[1]), num(m[2])]);
+    const xq = num(q.prompt.match(/Vad blir (−?\d+)/)[1]);
+    const lag = pts.reduce((sum, [xi, yi], i) => sum + yi * pts.reduce((p, [xj], j) => (j === i ? p : (p * (xq - xj)) / (xi - xj)), 1), 0);
+    assert.equal(num(q.options[q.correct]), Math.round(lag));
   }
 });
 

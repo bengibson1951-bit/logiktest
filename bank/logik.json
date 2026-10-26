@@ -778,5 +778,197 @@
     ],
     "correct": 1,
     "explanation": "Chef → har gått utbildningen → minst två års anställning. Fälla: att vända på kedjan – alla som gått utbildningen behöver inte vara chefer."
+  },
+  {
+    "id": "logik-syllogism-015",
+    "area": "logik",
+    "subtype": "syllogism",
+    "difficulty": 4,
+    "source": "bank",
+    "prompt": "Några av löparna är simmare. Alla simmare är cyklister. Inga rökare är cyklister.\nPåstående: Några simmare är inte löpare.",
+    "options": [
+      "Sant",
+      "Falskt",
+      "Möjligt",
+      "Osannolikt"
+    ],
+    "correct": 2,
+    "explanation": "\"Några löpare är simmare\" säger inget om simmarna utanför löpargruppen – alla simmare kan vara löpare, men behöver inte. Fälla: att läsa \"några A är B\" som \"några B är inte A\"."
+  },
+  {
+    "id": "logik-syllogism-016",
+    "area": "logik",
+    "subtype": "syllogism",
+    "difficulty": 4,
+    "source": "bank",
+    "prompt": "Om projektet inte får finansiering, så läggs avdelningen ned. Om avdelningen läggs ned, så flyttar Sara. Sara flyttar inte.\nPåstående: Projektet får finansiering.",
+    "options": [
+      "Sant",
+      "Falskt",
+      "Möjligt",
+      "Osannolikt"
+    ],
+    "correct": 0,
+    "explanation": "Kontraposition i två steg: Sara flyttar inte → avdelningen läggs inte ned → projektet får finansiering. Fälla: att tappa bort negationen i första premissen."
+  },
+  {
+    "id": "logik-syllogism-017",
+    "area": "logik",
+    "subtype": "syllogism",
+    "difficulty": 4,
+    "source": "bank",
+    "prompt": "Några av konsulterna är certifierade. Alla certifierade har säkerhetsprövning. Ingen med säkerhetsprövning arbetar på distans.\nPåstående: Alla konsulter arbetar på distans.",
+    "options": [
+      "Sant",
+      "Falskt",
+      "Möjligt",
+      "Osannolikt"
+    ],
+    "correct": 1,
+    "explanation": "De certifierade konsulterna har säkerhetsprövning och kan därför inte arbeta på distans. Alltså finns minst en konsult som inte arbetar på distans, så påståendet motsägs."
+  },
+  {
+    "id": "logik-syllogism-018",
+    "area": "logik",
+    "subtype": "syllogism",
+    "difficulty": 4,
+    "source": "bank",
+    "prompt": "Inga praktikanter har nyckelkort. Alla i driftteamet har nyckelkort. Några av nattpersonalen tillhör driftteamet.\nPåstående: Några av nattpersonalen är inte praktikanter.",
+    "options": [
+      "Sant",
+      "Falskt",
+      "Möjligt",
+      "Osannolikt"
+    ],
+    "correct": 0,
+    "explanation": "De nattanställda som tillhör driftteamet har nyckelkort och kan därför inte vara praktikanter. Fälla: att tro att \"några … är inte\" kräver mer information."
+  },
+  {
+    "id": "logik-syllogism-019",
+    "area": "logik",
+    "subtype": "syllogism",
+    "difficulty": 4,
+    "source": "bank",
+    "prompt": "Lisa flyttar till Umeå bara om hon får tjänsten. Om hon får tjänsten säljer hon bilen. Lisa säljer bilen.\nPåstående: Lisa flyttar till Umeå.",
+    "options": [
+      "Sant",
+      "Falskt",
+      "Möjligt",
+      "Osannolikt"
+    ],
+    "correct": 2,
+    "explanation": "\"Bara om\" betyder flytt → tjänst → säljer bilen; att hon säljer bilen bevisar varken tjänst eller flytt. Fälla: att bekräfta efterledet."
+  },
+  {
+    "id": "logik-syllogism-020",
+    "area": "logik",
+    "subtype": "syllogism",
+    "difficulty": 4,
+    "source": "bank",
+    "prompt": "De flesta av företagets säljare når sin budget. Alla som når sin budget får bonus. Ingen som får bonus står på varningslistan. Johan är säljare på företaget.\nPåstående: Johan står på varningslistan.",
+    "options": [
+      "Sant",
+      "Falskt",
+      "Möjligt",
+      "Osannolikt"
+    ],
+    "correct": 3,
+    "explanation": "Johan kan bara stå på varningslistan om han tillhör minoriteten som inte når budget. Det är inte uteslutet, men osannolikt."
+  },
+  {
+    "id": "logik-slutsats-023",
+    "area": "logik",
+    "subtype": "slutsats",
+    "difficulty": 4,
+    "source": "bank",
+    "prompt": "Alla som fick gå vidare till intervju hade minst tre års erfarenhet. Av 40 sökande hade 25 minst tre års erfarenhet. 12 sökande gick vidare till intervju.\nVilken slutsats kan dras?",
+    "options": [
+      "Alla med minst tre års erfarenhet gick vidare till intervju.",
+      "15 sökande gick inte vidare trots minst tre års erfarenhet.",
+      "Exakt 13 sökande med minst tre års erfarenhet gick inte vidare.",
+      "Det räckte med tre års erfarenhet för att gå vidare."
+    ],
+    "correct": 2,
+    "explanation": "Alla 12 intervjuade finns bland de 25 erfarna, så 25 − 12 = 13 erfarna gick inte vidare. Fälla: att vända villkoret – erfarenhet var nödvändigt, inte tillräckligt."
+  },
+  {
+    "id": "logik-slutsats-024",
+    "area": "logik",
+    "subtype": "slutsats",
+    "difficulty": 4,
+    "source": "bank",
+    "prompt": "I en frivillig personalenkät svarade 60 % av de anställda. Av dem som svarade var 70 % nöjda med sin chef. Inga andra uppgifter om de anställdas åsikter finns.\nVilken slutsats kan dras?",
+    "options": [
+      "70 % av företagets anställda är nöjda med sin chef.",
+      "Minst 42 % av företagets anställda är nöjda med sin chef.",
+      "Högst 42 % av företagets anställda är nöjda med sin chef.",
+      "De anställda som inte svarade är mindre nöjda än de som svarade."
+    ],
+    "correct": 1,
+    "explanation": "0,6 × 0,7 = 42 % av alla anställda är bevisat nöjda; de som inte svarade kan också vara nöjda. Fälla: att låta svarsgruppen gälla för alla."
+  },
+  {
+    "id": "logik-slutsats-025",
+    "area": "logik",
+    "subtype": "slutsats",
+    "difficulty": 4,
+    "source": "bank",
+    "prompt": "På de lager som infört ett nytt skiftschema har sjukfrånvaron sjunkit med i genomsnitt 15 %. Schemat infördes först på de lager som hade lägst personalomsättning. På lagren utan nytt schema sjönk sjukfrånvaron med 5 % under samma period.\nVilken slutsats kan dras?",
+    "options": [
+      "Det nya schemat minskar sjukfrånvaron med 10 procentenheter.",
+      "Låg personalomsättning orsakar låg sjukfrånvaro.",
+      "Om alla lager inför schemat sjunker sjukfrånvaron med 15 %.",
+      "Sjukfrånvaron sjönk mer på lagren med nytt schema, men de lagren skilde sig från övriga redan innan."
+    ],
+    "correct": 3,
+    "explanation": "Texten visar bara ett samband, och lagren valdes inte slumpmässigt. Fälla: att tolka korrelation som orsak."
+  },
+  {
+    "id": "logik-slutsats-026",
+    "area": "logik",
+    "subtype": "slutsats",
+    "difficulty": 4,
+    "source": "bank",
+    "prompt": "En order skickas samma dag om den läggs före kl. 14 och varan finns i lager. Varor som finns i lager visas med grön markering. Kalles vara hade grön markering, men hans order skickades inte samma dag.\nVilken slutsats kan dras?",
+    "options": [
+      "Antingen lades ordern efter kl. 14, eller så fanns varan inte i lager.",
+      "Kalle lade sin order efter kl. 14.",
+      "Varan fanns inte i lager.",
+      "Om Kalle hade beställt före kl. 14 hade ordern skickats samma dag."
+    ],
+    "correct": 0,
+    "explanation": "Kontraposition: ordern skickades inte, alltså var minst ett av villkoren inte uppfyllt. Fälla: grön markering bevisar inte att varan fanns i lager – villkoret gäller bara åt andra hållet."
+  },
+  {
+    "id": "logik-slutsats-027",
+    "area": "logik",
+    "subtype": "slutsats",
+    "difficulty": 4,
+    "source": "bank",
+    "prompt": "I ett team på 20 personer talar 14 engelska och 9 tyska. Alla i teamet talar minst ett av språken. Alla som talar båda språken arbetar med export.\nVilken slutsats kan dras?",
+    "options": [
+      "Exakt 3 personer i teamet arbetar med export.",
+      "Alla som arbetar med export talar båda språken.",
+      "Minst 3 personer i teamet arbetar med export.",
+      "Högst 3 personer i teamet arbetar med export."
+    ],
+    "correct": 2,
+    "explanation": "14 + 9 − 20 = 3 talar båda och arbetar därför med export; fler kan arbeta med export. Fälla: att vända villkoret och tro att exakt de 3 arbetar med export."
+  },
+  {
+    "id": "logik-slutsats-028",
+    "area": "logik",
+    "subtype": "slutsats",
+    "difficulty": 4,
+    "source": "bank",
+    "prompt": "Den som varit anställd längst får välja semester först. Anna anställdes före Bertil men efter Cecilia. David anställdes efter Cecilia. Ingen av dem anställdes samma dag.\nVilken slutsats kan dras om de fyra?",
+    "options": [
+      "Anna väljer semester före David.",
+      "David väljer semester sist.",
+      "Bertil väljer semester sist.",
+      "Cecilia väljer semester först."
+    ],
+    "correct": 3,
+    "explanation": "Cecilia anställdes före både Anna (och därmed Bertil) och David, så hon har längst anställning. Davids plats i förhållande till Anna och Bertil framgår inte."
   }
 ]

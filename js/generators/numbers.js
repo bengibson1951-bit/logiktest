@@ -48,6 +48,29 @@ export function talserie(seed, difficulty) {
       terms = Array.from({ length: 6 }, (_, i) => (s + i) ** 2);
       rule = "talen är kvadrater på heltal i följd";
     }
+  } else if (difficulty >= 4) {
+    const kind = pick(rand, ["second_geo", "mult_inc", "interleaved_geo", "square_shift"]);
+    if (kind === "second_geo") {
+      const d = randInt(rand, 1, 3), r = pick(rand, [2, 3]);
+      let a = randInt(rand, 1, 15);
+      if (a * (r - 1) === d) a += 1; // otherwise it collapses into a plain geometric series
+      terms = [a];
+      for (let i = 1; i < 7; i++) terms.push(terms[i - 1] + d * r ** (i - 1));
+      rule = `skillnaderna mellan talen multipliceras med ${r} varje gång`;
+    } else if (kind === "mult_inc") {
+      const a = randInt(rand, 1, 3), m = randInt(rand, 1, 2);
+      terms = [a];
+      for (let i = 1; i < 6; i++) terms.push(terms[i - 1] * (m + i));
+      rule = `talen multipliceras med ${m + 1}, ${m + 2}, ${m + 3} … i tur och ordning`;
+    } else if (kind === "interleaved_geo") {
+      const a = randInt(rand, 1, 4), b = randInt(rand, 3, 30), db = pick(rand, [3, 4, 5, -2, -3]);
+      terms = Array.from({ length: 8 }, (_, i) => (i % 2 === 0 ? a * 2 ** (i / 2) : b + ((i - 1) / 2) * db));
+      rule = `två serier varvas: varannat tal dubbleras, varannat ${db > 0 ? "ökar" : "minskar"} med ${Math.abs(db)}`;
+    } else {
+      const s = randInt(rand, 2, 6), c = pick(rand, [-3, -2, -1, 1, 2, 3]);
+      terms = Array.from({ length: 6 }, (_, i) => (s + i) ** 2 + c * (s + i));
+      rule = `talen är n² ${c < 0 ? "−" : "+"} ${Math.abs(c)}n för n = ${s}, ${s + 1}, ${s + 2} …`;
+    }
   } else {
     const kind = pick(rand, ["fib", "affine", "alt_ops"]);
     if (kind === "fib") {
@@ -92,6 +115,22 @@ export function huvudrakning(seed, difficulty) {
       const d = randInt(rand, 3, 12), q = randInt(rand, 6, 25);
       expr = `${d * q} ÷ ${d}`; ans = q;
     }
+  } else if (difficulty >= 4) {
+    const kind = pick(rand, ["pct", "twobytwo", "frac"]);
+    if (kind === "pct") {
+      const p = pick(rand, [15, 35, 45, 12.5, 7.5, 65]);
+      const base = { 15: 20, 35: 20, 45: 20, 12.5: 8, 7.5: 40, 65: 20 }[p];
+      const n = base * randInt(rand, 3, 24);
+      expr = `${String(p).replace(".", ",")} % av ${n}`; ans = (p * n) / 100; extras = [n * p / 10].filter(Number.isInteger);
+    } else if (kind === "twobytwo") {
+      const a = randInt(rand, 13, 39), b = randInt(rand, 13, 39);
+      expr = `${a} × ${b}`; ans = a * b; extras = [a * b + 10, a * b - b, a * b + a];
+    } else {
+      const [p1, q1] = pick(rand, [[2, 3], [3, 4], [3, 5], [2, 5], [5, 6]]);
+      const [p2, q2] = pick(rand, [[1, 2], [3, 4], [2, 3], [4, 5]]);
+      const n = q1 * q2 * randInt(rand, 2, 9);
+      expr = `${p1}/${q1} av ${p2}/${q2} av ${n}`; ans = (n * p1 * p2) / (q1 * q2); extras = [(n * p1) / q1].filter(Number.isInteger);
+    }
   } else {
     const kind = pick(rand, ["neg", "mixed", "big"]);
     if (kind === "neg") {
@@ -115,6 +154,7 @@ export function huvudrakning(seed, difficulty) {
 
 export function talsamband(seed, difficulty) {
   const rand = mulberry32(seed * 7368787 + 31);
+  if (difficulty >= 4) return talsambandQuadratic(seed, rand);
   const a = difficulty === 1 ? randInt(rand, 2, 5) : randInt(rand, 2, 9);
   const b = difficulty === 1 ? 0 : difficulty === 2 ? randInt(rand, 1, 9) : pick(rand, [-7, -5, -3, -1, 1, 3, 5, 7, 11]);
   const f = (x) => a * x + b;
@@ -127,6 +167,26 @@ export function talsamband(seed, difficulty) {
     name: "talsamband", seed, difficulty, rand,
     prompt: `${xs.map((x) => `${fmt(x)} → ${fmt(f(x))}`).join(",  ")}.\nVad blir ${fmt(xq)} → ?`,
     answer: fmt(ans), distractors: nearby(rand, ans, [a * xq, ans + a]).map(fmt),
+    explanation: `Regeln är ${rule}, så ${fmt(xq)} → ${fmt(ans)}.`,
+  });
+}
+
+// Level 4: the rule is not linear (x², x² ± c, x(x + 1)).
+function talsambandQuadratic(seed, rand) {
+  const kind = pick(rand, ["sq_plus", "x_x1", "two_sq"]);
+  const c = randInt(rand, 1, 9) * pick(rand, [1, -1]);
+  const f = kind === "sq_plus" ? (x) => x * x + c : kind === "x_x1" ? (x) => x * (x + 1) : (x) => 2 * x * x - c;
+  const rule = kind === "sq_plus" ? `x² ${c < 0 ? "−" : "+"} ${Math.abs(c)}` : kind === "x_x1" ? "x × (x + 1)" : `2x² ${c < 0 ? "+" : "−"} ${Math.abs(c)}`;
+  const x0 = randInt(rand, 2, 5);
+  const xs = [x0, x0 + 1, x0 + 3];
+  const xq = x0 + randInt(rand, 4, 6);
+  const ans = f(xq);
+  // Typical mistake: continuing linearly from the last two points.
+  const lin = f(xs[2]) + ((f(xs[2]) - f(xs[1])) / (xs[2] - xs[1])) * (xq - xs[2]);
+  return makeQuestion({
+    name: "talsamband", seed, difficulty: 4, rand,
+    prompt: `${xs.map((x) => `${fmt(x)} → ${fmt(f(x))}`).join(",  ")}.\nVad blir ${fmt(xq)} → ?`,
+    answer: fmt(ans), distractors: nearby(rand, ans, [lin, f(xq - 1), f(xq) + xq]).map(fmt),
     explanation: `Regeln är ${rule}, så ${fmt(xq)} → ${fmt(ans)}.`,
   });
 }
