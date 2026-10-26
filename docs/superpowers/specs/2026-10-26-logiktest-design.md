@@ -173,7 +173,7 @@ These thresholds and formulas are starting points, and the builder may tune them
   - The browser sends a snapshot of each question with the answer, and the RPC upserts it.
   - The table therefore always contains exactly what she saw, including generated questions.
 - `lt_sessions(id uuid pk, mode, filter, started_at, ended_at, time_limit_s, paused_total_ms, total, answered, correct, metrics jsonb, client_version)`
-- `lt_answers(id uuid pk, session_id fk, question_id fk, position int, chosen int null, is_correct bool null, skipped bool, time_ms int, paused_ms int, changes int, answered_at)`
+- `lt_answers(id uuid pk, session_id fk, question_id fk, position int, chosen int null, is_correct bool null, skipped bool, time_ms int, paused_ms int, answered_at)`
   - The pair `(session_id, position)` is unique, which makes answer uploads safe to retry.
 - `lt_config(key text pk, value text)`, holding the passphrase hash.
 
