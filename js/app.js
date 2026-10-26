@@ -5,14 +5,14 @@ import { AREAS, AREA_LABELS, SUBTYPES, subtypesOf } from "./taxonomy.js";
 import { createDb } from "./db.js";
 import { createOutbox } from "./outbox.js";
 import { loadBank } from "./bank.js";
-import { MODES, buildRound } from "./engine.js";
+import { MODES, buildRound, buildLogiq, LOGIQ_VERSIONS } from "./engine.js";
 import { newRound, recordAnswer, recordSkip, timeUp } from "./round.js";
 import { createStopwatch } from "./timer.js";
-import { roundMetrics, subtypeStats, flags, weights, targetSeconds, FLAG_LABELS, TARGET_S } from "./metrics.js";
+import { roundMetrics, subtypeStats, flags, weights, targetSeconds, blockMetrics, overallEfficiency, FLAG_LABELS, TARGET_S } from "./metrics.js";
 import { renderFigure, renderCell } from "./svg.js";
 import { load, save, setResume, clearResume, addRecent } from "./store.js";
 
-const CLIENT_VERSION = "1.2.0";
+const CLIENT_VERSION = "1.3.0";
 const SKIP_NUDGE_MS = 30000;
 const app = document.getElementById("app");
 const db = createDb({ url: SUPABASE_URL, anonKey: SUPABASE_ANON_KEY });
@@ -119,6 +119,7 @@ function showHome() {
         <div><div class="stat">${secs(last.metrics.medianS)}</div><div class="stat-label">Median per fråga (mål ${TARGET_S} s)</div></div>
       </div></div>` : ""}
     <div class="grid2">
+      <button class="big" id="logiq"><strong>LogiQ-simulering</strong><span class="muted small">3 × 20 frågor · tiden räknas · troligast likt riktiga testet</span></button>
       <button class="big" data-mode="full"><strong>Fullt test</strong><span class="muted small">80 frågor · 30 min · som riktiga testet</span></button>
       <button class="big" data-mode="quick"><strong>Snabbrunda</strong><span class="muted small">20 frågor · 7½ min · daglig uppvärmning</span></button>
       <button class="big" data-mode="weak"><strong>Träna svagheter</strong><span class="muted small">20 frågor från dina långsammaste och svagaste typer</span></button>
@@ -141,6 +142,7 @@ function showHome() {
   updateOutboxNote();
   app.querySelectorAll("[data-mode]").forEach((b) => b.addEventListener("click", () => startMode(b.dataset.mode)));
   document.getElementById("drill").addEventListener("click", showDrillPicker);
+  document.getElementById("logiq").addEventListener("click", showLogiqPicker);
   document.getElementById("stats").addEventListener("click", showStats);
   document.getElementById("resume")?.addEventListener("click", () => runRound(state.resume));
   document.getElementById("discard")?.addEventListener("click", () => {
@@ -162,15 +164,16 @@ async function startMode(mode, filter = null) {
     try { liveStats = await fetchStats(); } catch { liveStats = {}; }
     if (mode === "weak") subtypeWeights = weights(liveStats);
   }
-  const questions = buildRound({
-    mode, bank, filter, subtypeWeights,
-    seed: Math.floor(Math.random() * 2 ** 31),
-    recentIds: new Set(state.recentIds),
-  });
+  const seed = Math.floor(Math.random() * 2 ** 31);
+  const recentIds = new Set(state.recentIds);
+  let questions, blocks = null;
+  if (mode === "logiq") ({ questions, blocks } = buildLogiq({ version: filter.version, bank, seed, recentIds }));
+  else questions = buildRound({ mode, bank, filter, subtypeWeights, seed, recentIds });
   const round = newRound({
     sessionId: crypto.randomUUID(), mode, filter, questions,
     timeLimitS: MODES[mode].timeLimitS, startedAt: new Date().toISOString(),
   });
+  if (blocks) { round.blocks = blocks; round.blockAck = 0; }
   outbox.enqueue({
     type: "start",
     session: { id: round.sessionId, mode, filter, startedAt: round.startedAt, timeLimitS: round.timeLimitS, total: questions.length, clientVersion: CLIENT_VERSION },
@@ -180,6 +183,23 @@ async function startMode(mode, filter = null) {
   save(state);
   runRound(round);
 }
+
+function showLogiqPicker() {
+  screen(`
+    <p><button class="link" id="back">← Tillbaka</button></p>
+    <h1>LogiQ-simulering</h1>
+    <p>Det här liknar troligen det riktiga testet: <strong>3 block med 20 frågor</strong>, utan språkfrågor. Det finns ingen tidsgräns, men <strong>tiden räknas in i poängen</strong> – snabba och rätta svar ger mest. Varje block jämförs med JobMatchs referenstid.</p>
+    <p class="muted small">Blocken bygger på JobMatchs publicerade resultatexempel. Vilken version Unionen använder vet vi inte – välj den som passar tjänsten.</p>
+    ${Object.entries(LOGIQ_VERSIONS).map(([k, v]) => `
+      <div class="card"><div class="row spread"><div><strong>${esc(v.label)}</strong><br><span class="muted small">${esc(v.hint)} · ${v.blocks.map(([b, s]) => `${esc(BLOCK_LABELS[b])} (${mmss(s * 1000)})`).join(" · ")}</span></div>
+      <button class="primary" data-version="${k}">Starta</button></div></div>`).join("")}`);
+  document.getElementById("back").addEventListener("click", showHome);
+  app.querySelectorAll("[data-version]").forEach((b) => b.addEventListener("click", () => startMode("logiq", { version: b.dataset.version })));
+}
+
+const BLOCK_LABELS = { numeric: "Numerisk förståelse", general: "Generell logik", advanced: "Avancerad logik", complex: "Komplex problemlösning" };
+const blockAt = (round, pos) => round.blocks?.findIndex((b) => pos >= b.start && pos < b.start + b.count) ?? -1;
+const blockElapsedMs = (round, bi) => round.answers.filter((a) => blockAt(round, a.position) === bi).reduce((s, a) => s + a.timeMs, 0);
 
 function showDrillPicker() {
   screen(`
@@ -206,13 +226,16 @@ function runRound(round) {
 
   function show() {
     if (round.done) { cleanup(); return finishRound(round); }
+    const bi = blockAt(round, round.position);
+    if (bi > 0 && round.blockAck !== bi) return blockBreak(bi);
     const q = round.questions[round.position];
     const figs = q.options.some((o) => typeof o !== "string");
-    const target = targetSeconds(liveStats?.[q.subtype]);
+    const block = bi >= 0 ? round.blocks[bi] : null;
+    const target = block ? Math.round(block.refS / block.count) : targetSeconds(liveStats?.[q.subtype]);
     screen(`
       <div class="topbar">
-        <span>Fråga ${round.position + 1} / ${round.questions.length}</span>
-        ${timed ? `<span class="clock" id="clock">${mmss(round.remainingMs)}</span>` : `<span class="small">Mål: ${target} s</span>`}
+        <span>${block ? `Block ${bi + 1}/${round.blocks.length} · ${esc(block.label)} · ${round.position - block.start + 1}/${block.count}` : `Fråga ${round.position + 1} / ${round.questions.length}`}</span>
+        ${timed ? `<span class="clock" id="clock">${mmss(round.remainingMs)}</span>` : block ? `<span><span class="clock" id="bclock">${mmss(blockElapsedMs(round, bi))}</span> <span class="small">/ ref ${mmss(block.refS * 1000)}</span></span>` : `<span class="small">Mål: ${target} s</span>`}
         <button class="link" id="pause">Pausa</button>
       </div>
       ${timed ? "" : `<div class="target" id="target"><div></div></div>`}
@@ -245,8 +268,31 @@ function runRound(round) {
     }));
   }
 
+  function blockBreak(bi) {
+    const prev = round.blocks[bi - 1], next = round.blocks[bi];
+    const go = () => { round.blockAck = bi; save(state); show(); };
+    screen(`
+      <div class="card">
+        <h2>Block ${bi} klart</h2>
+        <p>${esc(prev.label)}: ${mmss(blockElapsedMs(round, bi - 1))} (referens ${mmss(prev.refS * 1000)}).</p>
+        <p>Nästa: <strong>${esc(next.label)}</strong>, ${next.count} frågor, referenstid ${mmss(next.refS * 1000)}. Klockan startar när du fortsätter.</p>
+        <button class="primary" id="go">Fortsätt (Enter)</button>
+      </div>`, (e) => { if (e.key === "Enter") go(); });
+    document.getElementById("go").addEventListener("click", go);
+  }
+
   function tick(target) {
     const { timeMs } = stopwatch.read();
+    const bi = blockAt(round, round.position);
+    if (bi >= 0) {
+      const el = document.getElementById("bclock");
+      if (el) el.textContent = mmss(blockElapsedMs(round, bi) + timeMs);
+      const hint = document.getElementById("hint");
+      if (hint && timeMs > Math.max(SKIP_NUDGE_MS, target * 2000) && !hint.classList.contains("nudge")) {
+        hint.classList.add("nudge");
+        hint.textContent = "Långt över referenstakten – överväg att hoppa över (S). Tiden räknas in i poängen.";
+      }
+    }
     if (timed) {
       const left = round.remainingMs - timeMs;
       const el = document.getElementById("clock");
@@ -293,6 +339,10 @@ function runRound(round) {
 function finishRound(round) {
   const total = round.questions.length;
   const metrics = roundMetrics(round.answers, total, { mode: round.mode });
+  if (round.blocks) {
+    metrics.blocks = blockMetrics(round.answers, round.blocks);
+    metrics.efficiency = overallEfficiency(metrics.blocks);
+  }
   outbox.enqueue({
     type: "finish",
     sessionId: round.sessionId,
@@ -331,8 +381,9 @@ function showResults(round, m) {
       </div>
       ${m.estLogik != null
         ? `<p style="margin-top:14px"><strong>Logikvärde ≈ ${m.estLogik}</strong> <span class="muted small">Uppskattning – inte JobMatch-poäng. Snittet bland JobMatch-testade är 116.</span></p>`
-        : `<p style="margin-top:14px">I den här takten hinner du <strong>ca ${projected} av 80</strong> frågor på 30 minuter.</p>`}
+        : m.blocks ? "" : `<p style="margin-top:14px">I den här takten hinner du <strong>ca ${projected} av 80</strong> frågor på 30 minuter.</p>`}
     </div>
+    ${m.blocks ? blocksCard(m) : ""}
     <div class="card"><h2>Per område</h2>${areaTable(m.byArea)}</div>
     <div class="card" id="flags"><h2>Mönster över senaste passen</h2><p class="muted small">Hämtar…</p></div>
     <div class="row"><button class="primary" id="review">Genomgång</button><button id="home">Hem</button></div>
@@ -348,6 +399,14 @@ function showResults(round, m) {
     const el = document.getElementById("flags");
     if (el) el.innerHTML = `<h2>Mönster över senaste passen</h2><p class="muted small">Kunde inte hämta statistik just nu.</p>`;
   });
+}
+
+function blocksCard(m) {
+  return `<div class="card"><h2>LogiQ-block</h2>
+    <p><strong>Effektivitet totalt: ${Math.round(m.efficiency * 100)} %</strong> <span class="muted small">= rätta svar per minut jämfört med alla rätt på referenstiden. I JobMatchs publicerade exempel motsvarade ca 55 % ungefär normgruppens snitt – en grov fingervisning, inte JobMatch-poäng.</span></p>
+    <table><tr><th>Block</th><th class="num">Rätt</th><th class="num">Besvarade</th><th class="num">Din tid</th><th class="num">Referens</th><th class="num">Effektivitet</th></tr>
+    ${m.blocks.map((b) => `<tr><td>${esc(b.label)}</td><td class="num">${b.correct}/${b.count}</td><td class="num">${b.answered}</td><td class="num">${mmss(b.timeS * 1000)}</td><td class="num">${mmss(b.refS * 1000)}</td><td class="num">${Math.round(b.efficiency * 100)} %</td></tr>`).join("")}
+    </table></div>`;
 }
 
 function flagsHtml(st) {

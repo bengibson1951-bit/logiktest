@@ -10,6 +10,7 @@ export const MODES = {
   weak: { count: 20, timeLimitS: null, label: "Träna svagheter" },
   drill: { count: 15, timeLimitS: null, label: "Ämnesdrill" },
   challenge: { count: 20, timeLimitS: 600, label: "Utmaning" },
+  logiq: { count: 60, timeLimitS: null, label: "LogiQ-simulering" },
 };
 
 // Utmaning: only the hardest level, weighted toward the language-independent areas
@@ -89,13 +90,20 @@ export function buildRound({ mode, bank, seed, subtypeWeights = null, filter = n
 
   let subs;
   if (mode === "drill") {
-    subs = filter?.subtype ? [filter.subtype] : subtypesOf(filter?.area ?? AREAS[0]);
+    subs = filter?.subtypes ?? (filter?.subtype ? [filter.subtype] : subtypesOf(filter?.area ?? AREAS[0]));
     subs = shuffle(rand, subs.filter(available));
-    for (let i = 0; i < count && subs.length; i++) {
+    const n = filter?.count ?? count;
+    const [lo, hi] = filter?.levels ?? [1, 3];
+    for (let i = 0; i < n && subs.length; i++) {
       const st = subs[i % subs.length];
-      const q = take(st, levelFor(i, count));
+      const level = lo + Math.min(hi - lo, Math.floor((i * (hi - lo + 1)) / n));
+      // Only fall back within the requested subtypes, never to another area.
+      let q = null;
+      for (const s of [st, ...subs.filter((x) => x !== st)]) if ((q = take(s, level))) break;
       if (q) out.push(q);
     }
+    // Easier first within a block.
+    if (filter?.levels) return [1, 2, 3, 4].flatMap((d) => shuffle(rand, out.filter((q) => q.difficulty === d)));
   } else {
     const w = subtypeWeights ?? {};
     for (let i = 0; i < count; i++) {
@@ -108,4 +116,45 @@ export function buildRound({ mode, bank, seed, subtypeWeights = null, filter = n
     }
   }
   return shuffle(rand, out);
+}
+
+// ---------- LogiQ simulation ----------
+// Block reference times come from JobMatch's public LogiQ example reports (20 items per block).
+const FIGURAL = ["matris", "figurserie", "figuranalogi", "udda_figur", "rotation", "riktning"];
+const BLOCKS = {
+  numeric: { label: "Numerisk förståelse", subtypes: ["huvudrakning", "talserie", "talsamband"], levels: [1, 3] },
+  general: { label: "Generell logik", subtypes: FIGURAL, levels: [1, 3] },
+  advanced: { label: "Avancerad logik", subtypes: FIGURAL, levels: [2, 4] },
+  complex: { label: "Komplex problemlösning", subtypes: ["matris", "figurserie", "placering", "rangordning", "flerstegs"], levels: [3, 4] },
+};
+
+export const LOGIQ_VERSIONS = {
+  qts: {
+    label: "Kvalificerade teoretiska tjänster",
+    hint: "Troligast för ombudsman, rådgivare, utredare",
+    blocks: [["numeric", 330], ["advanced", 600], ["complex", 555]],
+  },
+  lead: {
+    label: "Ledarskap",
+    hint: "Troligast för chefsroller",
+    blocks: [["numeric", 345], ["general", 375], ["complex", 585]],
+  },
+};
+
+export function buildLogiq({ version, bank, seed, recentIds = new Set() }) {
+  const v = LOGIQ_VERSIONS[version];
+  const questions = [];
+  const blocks = [];
+  const used = new Set();
+  let s = seed;
+  for (const [key, refS] of v.blocks) {
+    const b = BLOCKS[key];
+    const start = questions.length;
+    // Reuse the drill builder per subtype group so bank/generated handling stays in one place.
+    const pool = buildRound({ mode: "drill", bank: bank.filter((q) => !used.has(q.id)), seed: s++, filter: { subtypes: b.subtypes, levels: b.levels, count: 20 }, recentIds });
+    pool.forEach((q) => used.add(q.id));
+    questions.push(...pool);
+    blocks.push({ key, label: b.label, start, count: pool.length, refS });
+  }
+  return { questions, blocks };
 }

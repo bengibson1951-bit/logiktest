@@ -1,7 +1,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { generate, GENERATORS } from "../js/generators/index.js";
-import { sameUnderRotation } from "../js/generators/poly.js";
+import { sameUnderRotation, rotations, mirror, key } from "../js/generators/poly.js";
 import { SUBTYPES } from "../js/taxonomy.js";
 import { renderFigure, renderCell } from "../js/svg.js";
 
@@ -116,8 +116,31 @@ test("talsamband level 4: answer matches the quadratic through the three points"
   }
 });
 
+test("figuranalogi: exactly one option is C under the A→B transform", () => {
+  const sym = (c) => [...rotations(c), ...rotations(mirror(c))].map(key);
+  for (const d of [1, 2, 3, 4]) for (let s = 1; s <= SEEDS; s++) {
+    const q = generate("figuranalogi", s, d);
+    const [A, B, C] = q.figure.items.map((i) => i.cells);
+    const idx = sym(A).indexOf(key(B));
+    assert.ok(idx >= 0);
+    assert.equal(sym(A).filter((k) => k === key(B)).length, 1, "A→B transform must be unique");
+    const want = sym(C)[idx];
+    const hits = q.options.map((o, i) => (key(o.cells) === want ? i : -1)).filter((i) => i >= 0);
+    assert.deepEqual(hits, [q.correct]);
+  }
+});
+
+test("riktning: answer is start plus the sum of turns", () => {
+  for (const d of [1, 2, 3, 4]) for (let s = 1; s <= SEEDS; s++) {
+    const q = generate("riktning", s, d);
+    const end = (((q.figure.start + q.figure.turns.reduce((a, b) => a + b, 0)) % 360) + 360) % 360;
+    const hits = q.options.map((o, i) => (o.arrow === end ? i : -1)).filter((i) => i >= 0);
+    assert.deepEqual(hits, [q.correct]);
+  }
+});
+
 test("svg renders every figure spec", () => {
-  for (const name of ["matris", "figurserie", "rotation", "udda_figur"]) {
+  for (const name of ["matris", "figurserie", "rotation", "udda_figur", "figuranalogi", "riktning"]) {
     for (let s = 1; s <= 50; s++) {
       const q = generate(name, s, 1 + (s % 3));
       if (q.figure) assert.ok(renderFigure(q.figure).startsWith("<svg"));

@@ -71,6 +71,34 @@ export function renderFigure(spec, size = 84) {
       .join("");
     return `<svg class="fig" viewBox="0 0 ${W} ${size}" width="${W}" height="${size}" xmlns="http://www.w3.org/2000/svg">${HATCH}${inner}</svg>`;
   }
+  if (spec.kind === "analogy") {
+    // A  :  B   =   C  :  ?
+    const gap = 30;
+    const cells = [...spec.items, null];
+    const seps = [":", "=", ":"];
+    const W = cells.length * size + seps.length * gap;
+    let x = 0, inner = "";
+    cells.forEach((c, i) => {
+      inner += `<g transform="translate(${x},0)"><rect width="${size}" height="${size}" rx="6" fill="none" stroke="currentColor" stroke-opacity="0.2"/>${cellBody(c, size)}</g>`;
+      x += size;
+      if (i < seps.length) {
+        inner += `<text x="${x + gap / 2}" y="${size / 2}" text-anchor="middle" dominant-baseline="central" font-size="${size * 0.3}" fill="currentColor">${seps[i]}</text>`;
+        x += gap;
+      }
+    });
+    return `<svg class="fig" viewBox="0 0 ${W} ${size}" width="${W}" height="${size}" xmlns="http://www.w3.org/2000/svg">${HATCH}${inner}</svg>`;
+  }
+  if (spec.kind === "turns") {
+    // Start arrow followed by turn chips such as "↻ 90°".
+    const chipW = size * 0.95, gap = 10;
+    const W = size + spec.turns.length * (chipW + gap);
+    let inner = `<g><rect width="${size}" height="${size}" rx="6" fill="none" stroke="currentColor" stroke-opacity="0.2"/>${cellBody({ t: "ring", pos: null, arrow: spec.start }, size)}</g>`;
+    spec.turns.forEach((t, i) => {
+      const x = size + gap + i * (chipW + gap);
+      inner += `<g transform="translate(${x},${size * 0.25})"><rect width="${chipW}" height="${size * 0.5}" rx="${size * 0.12}" fill="none" stroke="currentColor" stroke-opacity="0.5"/><text x="${chipW / 2}" y="${size * 0.25}" text-anchor="middle" dominant-baseline="central" font-size="${size * 0.22}" fill="currentColor">${t > 0 ? "↻" : "↺"} ${Math.abs(t)}°</text></g>`;
+    });
+    return `<svg class="fig" viewBox="0 0 ${W} ${size}" width="${W}" height="${size}" xmlns="http://www.w3.org/2000/svg">${HATCH}${inner}</svg>`;
+  }
   if (spec.kind === "matrix") {
     const W = 3 * size;
     const inner = spec.cells

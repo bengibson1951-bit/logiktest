@@ -115,3 +115,15 @@ test("concurrent flushes don't double-send", async () => {
   await Promise.all([ob.flush(), ob.flush()]);
   assert.deepEqual(sent, [1, 2]);
 });
+
+test("blockMetrics and overallEfficiency", async () => {
+  const { blockMetrics, overallEfficiency } = await import("../js/metrics.js");
+  const blocks = [{ key: "numeric", label: "N", start: 0, count: 2, refS: 30 }, { key: "complex", label: "C", start: 2, count: 2, refS: 60 }];
+  const a = (position, isCorrect, timeMs, skipped = false) => ({ position, isCorrect: skipped ? null : isCorrect, skipped, timeMs });
+  const bm = blockMetrics([a(0, true, 15000), a(1, true, 15000), a(2, true, 60000), a(3, null, 60000, true)], blocks);
+  assert.equal(bm[0].efficiency, 1);              // 2 right in exactly the reference time
+  assert.equal(bm[1].correct, 1);
+  assert.equal(bm[1].answered, 1);
+  assert.equal(bm[1].efficiency, 0.25);           // 1 right in twice the reference time
+  assert.ok(Math.abs(overallEfficiency(bm) - (3 / 150) / (4 / 90)) < 1e-12);
+});

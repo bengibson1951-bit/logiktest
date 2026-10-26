@@ -23,6 +23,8 @@ export const SUBTYPES = {
   figurserie: S("uppfattning", "Figurserie", 5, "generated"),
   rotation: S("uppfattning", "Rotation", 4, "generated"),
   udda_figur: S("uppfattning", "Udda figur", 5, "generated"),
+  figuranalogi: S("uppfattning", "Figuranalogi", 5, "generated"),
+  riktning: S("uppfattning", "Riktning", 5, "generated"),
 
   huvudrakning: S("matte", "Huvudräkning", 5, "generated"),
   talserie: S("matte", "Talserie", 5, "generated"),

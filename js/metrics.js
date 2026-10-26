@@ -101,3 +101,26 @@ export function targetSeconds(stat) {
   if (!stat || stat.n < 5 || stat.medianS == null) return TARGET_S;
   return Math.min(TARGET_S, Math.max(10, Math.round(stat.medianS * 0.9)));
 }
+
+// LogiQ is scored by rate: correct answers per unit of time. Efficiency compares her rate with
+// "all 20 correct in the reference time" — in JobMatch's public example, ~55 % was about the group mean.
+export function blockMetrics(answers, blocks) {
+  return blocks.map((b) => {
+    const mine = answers.filter((a) => a.position >= b.start && a.position < b.start + b.count);
+    const correct = mine.filter((a) => a.isCorrect).length;
+    const timeS = mine.reduce((s, a) => s + a.timeMs, 0) / 1000;
+    return {
+      key: b.key, label: b.label, count: b.count, refS: b.refS,
+      answered: mine.filter((a) => !a.skipped).length,
+      correct, timeS,
+      efficiency: timeS > 0 ? (correct / timeS) / (b.count / b.refS) : 0,
+    };
+  });
+}
+
+export function overallEfficiency(blocks) {
+  const correct = blocks.reduce((s, b) => s + b.correct, 0);
+  const timeS = blocks.reduce((s, b) => s + b.timeS, 0);
+  const ideal = blocks.reduce((s, b) => s + b.count, 0) / blocks.reduce((s, b) => s + b.refS, 0);
+  return timeS > 0 ? correct / timeS / ideal : 0;
+}

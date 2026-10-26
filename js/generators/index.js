@@ -1,7 +1,7 @@
-import { matris, figurserie, rotation, udda_figur } from "./figures.js";
+import { matris, figurserie, rotation, udda_figur, figuranalogi, riktning } from "./figures.js";
 import { talserie, huvudrakning, talsamband } from "./numbers.js";
 
-const FNS = { matris, figurserie, rotation, udda_figur, talserie, huvudrakning, talsamband };
+const FNS = { matris, figurserie, rotation, udda_figur, figuranalogi, riktning, talserie, huvudrakning, talsamband };
 
 export const GENERATORS = Object.keys(FNS);
 

@@ -89,3 +89,18 @@ test("full test ends with level-4 questions", () => {
   assert.ok(qs.slice(-10).every((q) => q.difficulty >= 3));
   assert.ok(qs.some((q) => q.difficulty === 4));
 });
+
+test("logiq: three 20-item blocks, language-free, block reference times", async () => {
+  const { buildLogiq, LOGIQ_VERSIONS } = await import("../js/engine.js");
+  const bank = fixtureBank();
+  for (const version of Object.keys(LOGIQ_VERSIONS)) {
+    const { questions, blocks } = buildLogiq({ version, bank, seed: 3 });
+    assert.equal(questions.length, 60);
+    assert.deepEqual(blocks.map((b) => b.count), [20, 20, 20]);
+    assert.deepEqual(blocks.map((b) => b.start), [0, 20, 40]);
+    assert.deepEqual(blocks.map((b) => b.refS), LOGIQ_VERSIONS[version].blocks.map(([, s]) => s));
+    assert.ok(questions.every((q) => q.area !== "sprak" && q.area !== "logik"));
+    assert.ok(questions.slice(0, 20).every((q) => q.area === "matte"));
+    assert.equal(new Set(questions.map((q) => q.id)).size, 60);
+  }
+});

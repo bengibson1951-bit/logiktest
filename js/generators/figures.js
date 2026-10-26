@@ -152,3 +152,61 @@ export function udda_figur(seed, difficulty) {
     explanation: "Fyra av figurerna är samma form i olika vridning. Den udda är spegelvänd.",
   });
 }
+
+// A : B = C : ?  — B is A under one rotation/mirror; apply the same to C.
+// With a chiral shape that has four distinct rotations, the transform from A to B is unique.
+const TRANSFORMS = [
+  { key: "r90", label: "vrids 90° medurs", fn: (c) => rotations(c)[1] },
+  { key: "r180", label: "vrids ett halvt varv", fn: (c) => rotations(c)[2] },
+  { key: "r270", label: "vrids 90° moturs", fn: (c) => rotations(c)[3] },
+  { key: "m", label: "spegelvänds", fn: (c) => mirror(c) },
+  { key: "m90", label: "spegelvänds och vrids 90° medurs", fn: (c) => rotations(mirror(c))[1] },
+  { key: "m180", label: "spegelvänds och vrids ett halvt varv", fn: (c) => rotations(mirror(c))[2] },
+  { key: "m270", label: "spegelvänds och vrids 90° moturs", fn: (c) => rotations(mirror(c))[3] },
+];
+
+export function figuranalogi(seed, difficulty) {
+  const rand = mulberry32(seed * 49979687 + 13);
+  const n = [4, 5, 5, 6][difficulty - 1];
+  const pool = difficulty === 1 ? TRANSFORMS.slice(0, 3) : difficulty === 2 ? TRANSFORMS.slice(0, 4) : TRANSFORMS.slice(3);
+  const t = pick(rand, pool);
+  const a = randomPolyomino(rand, n);
+  let c = randomPolyomino(rand, difficulty >= 4 ? 7 : n);
+  while (JSON.stringify(c) === JSON.stringify(a)) c = randomPolyomino(rand, n);
+  const answer = { t: "poly", cells: t.fn(c) };
+  // Wrong options: C under the other symmetries (all distinct from the answer).
+  const others = shuffle(rand, [{ key: "id", fn: (x) => x }, ...TRANSFORMS].filter((o) => o.key !== t.key));
+  const distractors = others.slice(0, 4).map((o) => ({ t: "poly", cells: o.fn(c) }));
+  return makeQuestion({
+    name: "figuranalogi", seed, difficulty, rand,
+    prompt: "Första figuren förhåller sig till den andra som den tredje förhåller sig till …?",
+    answer, distractors,
+    explanation: `Figuren ${t.label}. Gör samma sak med den tredje figuren.`,
+    figure: { kind: "analogy", items: [{ t: "poly", cells: a }, { t: "poly", cells: t.fn(a) }, { t: "poly", cells: c }] },
+  });
+}
+
+// A start arrow plus a list of turns; where does it point afterwards?
+export function riktning(seed, difficulty) {
+  const rand = mulberry32(seed * 86028121 + 19);
+  const start = randInt(rand, 0, 7) * 45;
+  const steps = [[90, 180], [90, 180], [45, 90, 135, 180], [45, 90, 135, 180]][difficulty - 1];
+  const count = [2, 3, 4, 5][difficulty - 1];
+  const turns = Array.from({ length: count }, () => pick(rand, steps) * (rand() < 0.5 ? 1 : -1));
+  const end = (((start + turns.reduce((s, x) => s + x, 0)) % 360) + 360) % 360;
+  const answer = { t: "ring", pos: null, arrow: end };
+  const step = difficulty >= 3 ? 45 : 90;
+  const cands = [end + step, end - step, end + 180, end + 2 * step, start, end + 3 * step]
+    .map((d) => ((d % 360) + 360) % 360)
+    .filter((d, i, arr) => d !== end && arr.indexOf(d) === i);
+  // Plausible mistakes first, then any other direction to make up five options.
+  const rest = shuffle(rand, [0, 45, 90, 135, 180, 225, 270, 315].filter((d) => d !== end && !cands.includes(d)));
+  const distractors = [...shuffle(rand, cands), ...rest].slice(0, 4).map((d) => ({ t: "ring", pos: null, arrow: d }));
+  return makeQuestion({
+    name: "riktning", seed, difficulty, rand,
+    prompt: "Pilen vrids i tur och ordning enligt symbolerna (↻ medurs, ↺ moturs). Åt vilket håll pekar den till slut?",
+    answer, distractors,
+    explanation: `Summera vridningarna: ${turns.map((x) => `${x > 0 ? "+" : "−"}${Math.abs(x)}°`).join(" ")} = ${turns.reduce((s, x) => s + x, 0)}°.`,
+    figure: { kind: "turns", start, turns },
+  });
+}
