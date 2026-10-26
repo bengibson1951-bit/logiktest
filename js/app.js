@@ -11,8 +11,9 @@ import { createStopwatch } from "./timer.js";
 import { roundMetrics, subtypeStats, flags, weights, targetSeconds, blockMetrics, overallEfficiency, FLAG_LABELS, TARGET_S } from "./metrics.js";
 import { renderFigure, renderCell } from "./svg.js";
 import { load, save, setResume, clearResume, addRecent } from "./store.js";
+import { PROMPTS, TALENT_HTML, loadNotes, saveNote } from "./talent.js";
 
-const CLIENT_VERSION = "1.4.0";
+const CLIENT_VERSION = "1.5.0";
 const SKIP_NUDGE_MS = 30000;
 const app = document.getElementById("app");
 const db = createDb({ url: SUPABASE_URL, anonKey: SUPABASE_ANON_KEY });
@@ -64,7 +65,7 @@ function screen(html, onKey = null) {
   window.scrollTo(0, 0);
 }
 document.addEventListener("keydown", (e) => {
-  if (e.target instanceof HTMLInputElement || e.ctrlKey || e.metaKey || e.altKey) return;
+  if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement || e.ctrlKey || e.metaKey || e.altKey) return;
   keyHandler?.(e);
 });
 
@@ -125,7 +126,7 @@ function showHome() {
       <button class="big" data-mode="challenge"><strong>Utmaning</strong><span class="muted small">20 svåra frågor · 10 min · avancerad logik</span></button>
       <button class="big" id="drill"><strong>Ämnesdrill</strong><span class="muted small">Välj en frågetyp och nöt den</span></button>
     </div>
-    <p style="margin-top:12px" class="row spread"><button class="link" id="stats">Statistik och utveckling →</button>
+    <p style="margin-top:12px" class="row spread"><span class="row"><button class="link" id="stats">Statistik och utveckling →</button><button class="link" id="talent">Förbered JobMatch Talent →</button></span>
       <button class="link muted small" data-mode="full">Gammalt format: JobMatch Logic, 80 frågor · 30 min (inkl. språk)</button></p>
     <div class="card">
       <h2>Strategi inför JobMatch LogiQ</h2>
@@ -145,6 +146,7 @@ function showHome() {
   document.getElementById("drill").addEventListener("click", showDrillPicker);
   document.getElementById("logiq").addEventListener("click", showLogiqPicker);
   document.getElementById("stats").addEventListener("click", showStats);
+  document.getElementById("talent").addEventListener("click", showTalent);
   document.getElementById("resume")?.addEventListener("click", () => runRound(state.resume));
   document.getElementById("discard")?.addEventListener("click", () => {
     if (!confirm("Släng den pågående rundan? Svaren du redan gett är sparade.")) return;
@@ -443,6 +445,27 @@ function showReview(round) {
     <button id="home">Hem</button>`);
   document.getElementById("back").addEventListener("click", () => showResults(round, roundMetrics(round.answers, round.questions.length, { mode: round.mode })));
   document.getElementById("home").addEventListener("click", showHome);
+}
+
+// ---------- talent ----------
+function showTalent() {
+  const notes = loadNotes();
+  screen(`
+    <p><button class="link" id="back">← Tillbaka</button></p>
+    <h1>Förbered JobMatch Talent</h1>
+    ${TALENT_HTML}
+    <div class="card">
+      <h2>Reflektionsfrågor inför intervjun</h2>
+      <p class="muted small">Fyll i när du har läst din återkoppling. Anteckningarna sparas automatiskt, men bara i den här webbläsaren.</p>
+      ${PROMPTS.map((p) => `
+        <div class="review-item">
+          <label for="n-${p.id}"><strong>${esc(p.q)}</strong></label>
+          <p class="muted small">${esc(p.help)}</p>
+          <textarea id="n-${p.id}" data-note="${p.id}" rows="4">${esc(notes[p.id] ?? "")}</textarea>
+        </div>`).join("")}
+    </div>`);
+  document.getElementById("back").addEventListener("click", showHome);
+  app.querySelectorAll("[data-note]").forEach((t) => t.addEventListener("input", () => saveNote(t.dataset.note, t.value)));
 }
 
 // ---------- statistik ----------
