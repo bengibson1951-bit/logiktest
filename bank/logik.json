@@ -586,5 +586,197 @@
     ],
     "correct": 3,
     "explanation": "Försäljning har minst 11, ekonomi fler än så och IT ännu fler, så IT har klart fler än 10. Totalt kan företaget ha så få som 36 anställda."
+  },
+  {
+    "id": "logik-slutsats-011",
+    "area": "logik",
+    "subtype": "slutsats",
+    "difficulty": 1,
+    "source": "bank",
+    "prompt": "Alla bussar på linje 4 går via centralstationen. Buss 412 går på linje 4.\nVilken slutsats kan dras?",
+    "options": [
+      "Buss 412 är alltid i tid.",
+      "Alla bussar som går via centralstationen går på linje 4.",
+      "Buss 412 går via centralstationen.",
+      "Linje 4 är den mest trafikerade linjen."
+    ],
+    "correct": 2,
+    "explanation": "Regeln gäller alla bussar på linje 4, alltså även buss 412. Fälla: att vända på regeln – texten säger inte att alla bussar via centralstationen går på linje 4."
+  },
+  {
+    "id": "logik-slutsats-012",
+    "area": "logik",
+    "subtype": "slutsats",
+    "difficulty": 1,
+    "source": "bank",
+    "prompt": "Kaféet stänger kl. 17 på vardagar. I dag är det tisdag och klockan är 17.30.\nVilken slutsats kan dras?",
+    "options": [
+      "Kaféet är stängt just nu.",
+      "Kaféet är stängt på helger.",
+      "Kaféet öppnar kl. 8 på vardagar.",
+      "Kaféet har få kunder på tisdagar."
+    ],
+    "correct": 0,
+    "explanation": "Tisdag är en vardag och 17.30 är efter stängning. Fälla: helgerna – texten säger ingenting om helgernas öppettider."
+  },
+  {
+    "id": "logik-slutsats-013",
+    "area": "logik",
+    "subtype": "slutsats",
+    "difficulty": 1,
+    "source": "bank",
+    "prompt": "Ingen i löparklubben röker. Johan röker.\nVilken slutsats kan dras?",
+    "options": [
+      "Johan har aldrig sprungit.",
+      "Ingen som röker springer.",
+      "Alla i löparklubben är friska.",
+      "Johan är inte med i löparklubben."
+    ],
+    "correct": 3,
+    "explanation": "Eftersom ingen i klubben röker kan Johan inte vara med. Fälla: att generalisera till alla rökare – texten handlar bara om klubbens medlemmar."
+  },
+  {
+    "id": "logik-slutsats-014",
+    "area": "logik",
+    "subtype": "slutsats",
+    "difficulty": 1,
+    "source": "bank",
+    "prompt": "Lisa är äldre än Omar. Omar är äldre än Sara.\nVilken slutsats kan dras?",
+    "options": [
+      "Sara är yngst i familjen.",
+      "Lisa är äldre än Sara.",
+      "Omar är äldst av de tre.",
+      "Lisa och Sara är syskon."
+    ],
+    "correct": 1,
+    "explanation": "Lisa > Omar > Sara ger att Lisa är äldre än Sara. Fälla: ”yngst i familjen” lägger till en familj som texten inte nämner."
+  },
+  {
+    "id": "logik-slutsats-015",
+    "area": "logik",
+    "subtype": "slutsats",
+    "difficulty": 2,
+    "source": "bank",
+    "prompt": "Alla som fick bonus i år nådde sitt säljmål. Anna fick bonus. Erik fick ingen bonus.\nVilken slutsats kan dras?",
+    "options": [
+      "Anna nådde sitt säljmål.",
+      "Erik nådde inte sitt säljmål.",
+      "Alla som nådde säljmålet fick bonus.",
+      "Anna sålde mer än Erik."
+    ],
+    "correct": 0,
+    "explanation": "Anna fick bonus, och alla med bonus nådde målet. Fälla: Erik – att han saknar bonus betyder inte att han missade målet."
+  },
+  {
+    "id": "logik-slutsats-016",
+    "area": "logik",
+    "subtype": "slutsats",
+    "difficulty": 2,
+    "source": "bank",
+    "prompt": "I juli ökade glassförsäljningen i kiosken. Samma månad ökade antalet drunkningsolyckor i kommunen.\nVilken slutsats kan dras?",
+    "options": [
+      "Glassätande orsakar drunkningsolyckor.",
+      "Kiosken säljer mest glass på sommaren.",
+      "Både glassförsäljningen och drunkningsolyckorna ökade i juli.",
+      "Drunkningsolyckorna minskar när glassförsäljningen minskar."
+    ],
+    "correct": 2,
+    "explanation": "Texten visar bara att båda ökade samtidigt. Fälla: att två saker sker samtidigt bevisar inte att den ena orsakar den andra."
+  },
+  {
+    "id": "logik-slutsats-017",
+    "area": "logik",
+    "subtype": "slutsats",
+    "difficulty": 2,
+    "source": "bank",
+    "prompt": "Mötet börjar kl. 14 och pågår i 90 minuter. Karin måste gå senast kl. 15.\nVilken slutsats kan dras?",
+    "options": [
+      "Karin missar hela mötet.",
+      "Mötet slutar kl. 15.",
+      "Karin är inte intresserad av mötet.",
+      "Karin missar minst den sista halvtimmen av mötet."
+    ],
+    "correct": 3,
+    "explanation": "Mötet slutar 15.30 och Karin går senast 15.00. Fälla: ”slutar kl. 15” – 14.00 plus 90 minuter blir 15.30."
+  },
+  {
+    "id": "logik-slutsats-018",
+    "area": "logik",
+    "subtype": "slutsats",
+    "difficulty": 2,
+    "source": "bank",
+    "prompt": "Butiken ger 20 % rabatt på alla jackor. Rabatten gäller inte varor som redan är nedsatta. Lina köpte en jacka som redan var nedsatt.\nVilken slutsats kan dras?",
+    "options": [
+      "Lina betalade ordinarie pris för jackan.",
+      "Lina fick inte 20 % rabatt på jackan.",
+      "Inga jackor var nedsatta före kampanjen.",
+      "Rabatten gäller bara jackor."
+    ],
+    "correct": 1,
+    "explanation": "Nedsatta varor är undantagna, så Lina fick inte de 20 procenten. Fälla: ”ordinarie pris” – jackan var ju redan nedsatt."
+  },
+  {
+    "id": "logik-slutsats-019",
+    "area": "logik",
+    "subtype": "slutsats",
+    "difficulty": 3,
+    "source": "bank",
+    "prompt": "Om det regnar ställs lördagens match in. Matchen ställdes inte in.\nVilken slutsats kan dras?",
+    "options": [
+      "Det regnade inte på lördagen.",
+      "Det var soligt på lördagen.",
+      "Matchen spelades inomhus.",
+      "Om matchen ställs in har det regnat."
+    ],
+    "correct": 0,
+    "explanation": "Regn hade gett inställd match, och matchen ställdes inte in – alltså regnade det inte. Fälla: ”soligt” lägger till väder som texten inte säger något om."
+  },
+  {
+    "id": "logik-slutsats-020",
+    "area": "logik",
+    "subtype": "slutsats",
+    "difficulty": 3,
+    "source": "bank",
+    "prompt": "Några av kursdeltagarna är sjuksköterskor. Alla sjuksköterskor på kursen arbetar natt.\nVilken slutsats kan dras?",
+    "options": [
+      "Alla kursdeltagare arbetar natt.",
+      "Alla som arbetar natt är sjuksköterskor.",
+      "Några av kursdeltagarna arbetar natt.",
+      "Ingen sjuksköterska arbetar dagtid."
+    ],
+    "correct": 2,
+    "explanation": "De deltagare som är sjuksköterskor arbetar natt, alltså gör några deltagare det. Fälla: att gå från ”några” till ”alla” kursdeltagare."
+  },
+  {
+    "id": "logik-slutsats-021",
+    "area": "logik",
+    "subtype": "slutsats",
+    "difficulty": 3,
+    "source": "bank",
+    "prompt": "Företagets försäljning ökade efter att en ny reklamkampanj startade. Samtidigt sänktes priserna med 10 %.\nVilken slutsats kan dras?",
+    "options": [
+      "Reklamkampanjen orsakade försäljningsökningen.",
+      "Prissänkningen orsakade försäljningsökningen.",
+      "Försäljningen minskar om priserna höjs igen.",
+      "Försäljningen ökade under en period med lägre priser än tidigare."
+    ],
+    "correct": 3,
+    "explanation": "Ökningen skedde när priserna var sänkta. Fälla: att utse kampanjen som orsak – texten ger två möjliga förklaringar och avgör inte vilken."
+  },
+  {
+    "id": "logik-slutsats-022",
+    "area": "logik",
+    "subtype": "slutsats",
+    "difficulty": 3,
+    "source": "bank",
+    "prompt": "Alla chefer på företaget har gått ledarskapsutbildningen. Ingen som gått utbildningen har varit anställd kortare tid än två år.\nVilken slutsats kan dras?",
+    "options": [
+      "Alla som varit anställda i över två år är chefer.",
+      "Ingen chef på företaget har varit anställd kortare tid än två år.",
+      "Alla som gått utbildningen är chefer.",
+      "Cheferna är bättre ledare än övriga anställda."
+    ],
+    "correct": 1,
+    "explanation": "Chef → har gått utbildningen → minst två års anställning. Fälla: att vända på kedjan – alla som gått utbildningen behöver inte vara chefer."
   }
 ]

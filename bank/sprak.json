@@ -670,5 +670,209 @@
     ],
     "correct": 0,
     "explanation": "Snål är en överdriven, negativ form av sparsam; dumdristig är en överdriven form av modig."
+  },
+  {
+    "id": "sprak-motsats-009",
+    "area": "sprak",
+    "subtype": "motsats",
+    "difficulty": 1,
+    "source": "bank",
+    "prompt": "Vilket ord är motsatsen till FRIKOSTIG?",
+    "options": [
+      "givmild",
+      "förmögen",
+      "njugg",
+      "flitig",
+      "blygsam"
+    ],
+    "correct": 2,
+    "explanation": "Frikostig betyder givmild med pengar eller gåvor; motsatsen är njugg. Givmild är en synonym och förmögen handlar om att ha pengar, inte om att ge."
+  },
+  {
+    "id": "sprak-motsats-010",
+    "area": "sprak",
+    "subtype": "motsats",
+    "difficulty": 1,
+    "source": "bank",
+    "prompt": "Vilket ord är motsatsen till TILLTA?",
+    "options": [
+      "öka",
+      "avta",
+      "tilltala",
+      "stanna",
+      "fortsätta"
+    ],
+    "correct": 1,
+    "explanation": "Att tillta betyder att öka eller bli starkare; motsatsen är avta. Öka är en synonym och tilltala liknar bara ordet till formen."
+  },
+  {
+    "id": "sprak-motsats-011",
+    "area": "sprak",
+    "subtype": "motsats",
+    "difficulty": 1,
+    "source": "bank",
+    "prompt": "Vilket ord är motsatsen till ANSPRÅKSLÖS?",
+    "options": [
+      "blygsam",
+      "billig",
+      "tystlåten",
+      "enkel",
+      "pretentiös"
+    ],
+    "correct": 4,
+    "explanation": "Anspråkslös betyder blygsam och utan stora krav; motsatsen är pretentiös. Blygsam och enkel är synonymer, och billig handlar om pris snarare än hållning."
+  },
+  {
+    "id": "sprak-motsats-012",
+    "area": "sprak",
+    "subtype": "motsats",
+    "difficulty": 2,
+    "source": "bank",
+    "prompt": "Vilket ord är motsatsen till UTTALAD?",
+    "options": [
+      "uttrycklig",
+      "högljudd",
+      "stum",
+      "underförstådd",
+      "ordrik"
+    ],
+    "correct": 3,
+    "explanation": "Uttalad betyder klart uttryckt, som i ”ett uttalat mål”; motsatsen är underförstådd. Uttrycklig är en synonym, och stum är motsatsen till att tala – en annan betydelse."
+  },
+  {
+    "id": "sprak-motsats-013",
+    "area": "sprak",
+    "subtype": "motsats",
+    "difficulty": 2,
+    "source": "bank",
+    "prompt": "Vilket ord är motsatsen till AKUT?",
+    "options": [
+      "kronisk",
+      "brådskande",
+      "lindrig",
+      "tidig",
+      "smärtsam"
+    ],
+    "correct": 0,
+    "explanation": "Akut beskriver något som uppstår plötsligt och kräver snabb åtgärd; motsatsen är kronisk, alltså långvarig. Brådskande är en synonym och lindrig är motsatsen till svår, inte till akut."
+  },
+  {
+    "id": "sprak-motsats-014",
+    "area": "sprak",
+    "subtype": "motsats",
+    "difficulty": 2,
+    "source": "bank",
+    "prompt": "Vilket ord är motsatsen till SPARSMAKAD?",
+    "options": [
+      "måttfull",
+      "kräsen",
+      "överlastad",
+      "färglös",
+      "mätt"
+    ],
+    "correct": 2,
+    "explanation": "Sparsmakad betyder återhållsam och stilren, med få medel; motsatsen är överlastad. Måttfull är en närsynonym och kräsen syftar på matvanor, inte på stil."
+  },
+  {
+    "id": "sprak-motsats-015",
+    "area": "sprak",
+    "subtype": "motsats",
+    "difficulty": 2,
+    "source": "bank",
+    "prompt": "Vilket ord är motsatsen till AVOG?",
+    "options": [
+      "ovillig",
+      "sur",
+      "likgiltig",
+      "tveksam",
+      "välvillig"
+    ],
+    "correct": 4,
+    "explanation": "Avog betyder ovänligt eller negativt inställd; motsatsen är välvillig. Ovillig ligger nära i betydelse, och likgiltig betyder ointresserad snarare än positivt inställd."
+  },
+  {
+    "id": "sprak-motsats-016",
+    "area": "sprak",
+    "subtype": "motsats",
+    "difficulty": 2,
+    "source": "bank",
+    "prompt": "Vilket ord är motsatsen till MEDGÖRLIG?",
+    "options": [
+      "motsträvig",
+      "foglig",
+      "medlidsam",
+      "medelmåttig",
+      "nyfiken"
+    ],
+    "correct": 0,
+    "explanation": "Medgörlig betyder lätt att komma överens med; motsatsen är motsträvig. Foglig är en synonym och medlidsam liknar ordet men betyder medkännande."
+  },
+  {
+    "id": "sprak-motsats-017",
+    "area": "sprak",
+    "subtype": "motsats",
+    "difficulty": 3,
+    "source": "bank",
+    "prompt": "Vilket ord är motsatsen till KONCIS?",
+    "options": [
+      "komprimerad",
+      "korrekt",
+      "vidlyftig",
+      "konsekvent",
+      "konkret"
+    ],
+    "correct": 2,
+    "explanation": "Koncis betyder kort och koncentrerad; motsatsen är vidlyftig, alltså utförlig och långrandig. Komprimerad är en närsynonym, och konkret är motsatsen till abstrakt."
+  },
+  {
+    "id": "sprak-motsats-018",
+    "area": "sprak",
+    "subtype": "motsats",
+    "difficulty": 3,
+    "source": "bank",
+    "prompt": "Vilket ord är motsatsen till PERMISSIV?",
+    "options": [
+      "tillåtande",
+      "passiv",
+      "permanent",
+      "restriktiv",
+      "liberal"
+    ],
+    "correct": 3,
+    "explanation": "Permissiv betyder tillåtande och eftergiven; motsatsen är restriktiv. Tillåtande och liberal ligger nära i betydelse, medan passiv och permanent bara liknar ordet."
+  },
+  {
+    "id": "sprak-motsats-019",
+    "area": "sprak",
+    "subtype": "motsats",
+    "difficulty": 3,
+    "source": "bank",
+    "prompt": "Vilket ord är motsatsen till LATENT?",
+    "options": [
+      "dold",
+      "manifest",
+      "latinsk",
+      "potentiell",
+      "sen"
+    ],
+    "correct": 1,
+    "explanation": "Latent betyder dold eller vilande – något som finns men ännu inte märks; motsatsen är manifest, alltså öppet framträdande. Dold och potentiell är närsynonymer, och latinsk liknar bara ordet."
+  },
+  {
+    "id": "sprak-motsats-020",
+    "area": "sprak",
+    "subtype": "motsats",
+    "difficulty": 3,
+    "source": "bank",
+    "prompt": "Vilket ord är motsatsen till HETEROGEN?",
+    "options": [
+      "blandad",
+      "hermetisk",
+      "generisk",
+      "olikartad",
+      "homogen"
+    ],
+    "correct": 4,
+    "explanation": "Heterogen betyder sammansatt av olikartade delar; motsatsen är homogen, alltså enhetlig. Blandad och olikartad är synonymer, och hermetisk och generisk liknar bara ordet till formen."
   }
 ]

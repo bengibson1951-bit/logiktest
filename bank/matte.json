@@ -678,5 +678,260 @@
     ],
     "correct": 4,
     "explanation": "Hyran är 3 · 4 500 = 13 500 kr. 13 500 / 4 = 3 375 kr."
+  },
+  {
+    "id": "matte-textuppgift-021",
+    "area": "matte",
+    "subtype": "textuppgift",
+    "difficulty": 1,
+    "source": "bank",
+    "prompt": "En bil kör i 90 km/h. Hur långt kommer den på 20 minuter?",
+    "options": [
+      "30 km",
+      "45 km",
+      "18 km",
+      "60 km",
+      "20 km"
+    ],
+    "correct": 0,
+    "explanation": "Snabbväg: 20 min är en tredjedel av en timme, så 90 / 3 = 30 km."
+  },
+  {
+    "id": "matte-textuppgift-022",
+    "area": "matte",
+    "subtype": "textuppgift",
+    "difficulty": 1,
+    "source": "bank",
+    "prompt": "6 äpplen kostar 27 kr. Vad kostar 4 äpplen?",
+    "options": [
+      "13,50 kr",
+      "18 kr",
+      "4,50 kr",
+      "24 kr",
+      "20 kr"
+    ],
+    "correct": 1,
+    "explanation": "Snabbväg: 4 äpplen är två tredjedelar av 6, så 27 / 3 = 9 och 2 · 9 = 18 kr."
+  },
+  {
+    "id": "matte-textuppgift-023",
+    "area": "matte",
+    "subtype": "textuppgift",
+    "difficulty": 1,
+    "source": "bank",
+    "prompt": "Du köper en bok för 37 kr och en tidning för 48 kr och betalar med en 100-lapp. Hur mycket får du tillbaka?",
+    "options": [
+      "25 kr",
+      "5 kr",
+      "15 kr",
+      "85 kr",
+      "13 kr"
+    ],
+    "correct": 2,
+    "explanation": "Snabbväg: 37 + 48 = 85 (tänk 40 + 45), och upp till 100 fattas 15 kr."
+  },
+  {
+    "id": "matte-textuppgift-024",
+    "area": "matte",
+    "subtype": "textuppgift",
+    "difficulty": 1,
+    "source": "bank",
+    "prompt": "En skola har 240 elever. 15 % av dem cyklar till skolan. Hur många elever cyklar?",
+    "options": [
+      "24 elever",
+      "32 elever",
+      "48 elever",
+      "36 elever",
+      "34 elever"
+    ],
+    "correct": 3,
+    "explanation": "Snabbväg: 10 % är 24 och 5 % är hälften, 12. 24 + 12 = 36 elever."
+  },
+  {
+    "id": "matte-textuppgift-025",
+    "area": "matte",
+    "subtype": "textuppgift",
+    "difficulty": 1,
+    "source": "bank",
+    "prompt": "Anna är 4 gånger så gammal som sin son, som är 8 år. Hur gammal är Anna om 5 år?",
+    "options": [
+      "32 år",
+      "40 år",
+      "45 år",
+      "52 år",
+      "37 år"
+    ],
+    "correct": 4,
+    "explanation": "Snabbväg: Anna är 4 · 8 = 32 år nu, så om 5 år är hon 37 år. Bara Anna ska få +5."
+  },
+  {
+    "id": "matte-textuppgift-026",
+    "area": "matte",
+    "subtype": "textuppgift",
+    "difficulty": 2,
+    "source": "bank",
+    "prompt": "Pump A tömmer en pool på 6 timmar och pump B på 3 timmar. Hur lång tid tar det om båda pumparna arbetar samtidigt?",
+    "options": [
+      "4,5 h",
+      "1,5 h",
+      "2 h",
+      "3 h",
+      "9 h"
+    ],
+    "correct": 2,
+    "explanation": "Snabbväg: B är dubbelt så snabb som A, så tillsammans som tre A-pumpar: 6 / 3 = 2 h."
+  },
+  {
+    "id": "matte-textuppgift-027",
+    "area": "matte",
+    "subtype": "textuppgift",
+    "difficulty": 2,
+    "source": "bank",
+    "prompt": "Erik fick 72, 85, 90 och 77 poäng på fyra prov. Vad är hans medelpoäng?",
+    "options": [
+      "80 poäng",
+      "82 poäng",
+      "83 poäng",
+      "79 poäng",
+      "81 poäng"
+    ],
+    "correct": 4,
+    "explanation": "Snabbväg: utgå från 80. Avvikelserna −8, +5, +10, −3 blir +4, och 4 / 4 = 1, alltså 81 poäng."
+  },
+  {
+    "id": "matte-textuppgift-028",
+    "area": "matte",
+    "subtype": "textuppgift",
+    "difficulty": 2,
+    "source": "bank",
+    "prompt": "En cyklist cyklar 18 km på 45 minuter. Vad är medelhastigheten?",
+    "options": [
+      "24 km/h",
+      "13,5 km/h",
+      "27 km/h",
+      "40 km/h",
+      "22 km/h"
+    ],
+    "correct": 0,
+    "explanation": "Snabbväg: 45 min = tre fjärdedelar av en timme, så 18 km är 3 kvartar. 6 km per kvart · 4 = 24 km/h."
+  },
+  {
+    "id": "matte-textuppgift-029",
+    "area": "matte",
+    "subtype": "textuppgift",
+    "difficulty": 2,
+    "source": "bank",
+    "prompt": "En vara kostar 640 kr inklusive 25 % moms. Vad kostar varan utan moms?",
+    "options": [
+      "480 kr",
+      "615 kr",
+      "500 kr",
+      "512 kr",
+      "528 kr"
+    ],
+    "correct": 3,
+    "explanation": "Snabbväg: momsen är 1/4 av grundpriset, alltså 1/5 av totalpriset. 640 / 5 = 128 och 640 − 128 = 512 kr."
+  },
+  {
+    "id": "matte-textuppgift-030",
+    "area": "matte",
+    "subtype": "textuppgift",
+    "difficulty": 2,
+    "source": "bank",
+    "prompt": "Lisa är 12 år och hennes mamma är 40 år. Om hur många år är mamman exakt dubbelt så gammal som Lisa?",
+    "options": [
+      "14 år",
+      "16 år",
+      "28 år",
+      "8 år",
+      "12 år"
+    ],
+    "correct": 1,
+    "explanation": "Snabbväg: åldersskillnaden är alltid 28 år. Mamman är dubbelt så gammal när Lisa är 28, alltså om 28 − 12 = 16 år."
+  },
+  {
+    "id": "matte-textuppgift-031",
+    "area": "matte",
+    "subtype": "textuppgift",
+    "difficulty": 2,
+    "source": "bank",
+    "prompt": "Du köper 3 kaffe à 29 kr och 2 bullar à 18 kr och betalar med 200 kr. Hur mycket får du tillbaka?",
+    "options": [
+      "77 kr",
+      "87 kr",
+      "83 kr",
+      "73 kr",
+      "123 kr"
+    ],
+    "correct": 0,
+    "explanation": "Snabbväg: 3 · 29 = 90 − 3 = 87 och 2 · 18 = 36, totalt 123 kr. 200 − 123 = 77 kr."
+  },
+  {
+    "id": "matte-textuppgift-032",
+    "area": "matte",
+    "subtype": "textuppgift",
+    "difficulty": 3,
+    "source": "bank",
+    "prompt": "Två rör fyller en tank på 6 timmar tillsammans. Det ena röret fyller tanken ensamt på 10 timmar. Hur lång tid tar det för det andra röret ensamt?",
+    "options": [
+      "4 h",
+      "15 h",
+      "16 h",
+      "8 h",
+      "12 h"
+    ],
+    "correct": 1,
+    "explanation": "Snabbväg: tänk dig en tank på 30 liter. Tillsammans 5 l/h, första röret 3 l/h, alltså andra 2 l/h, och 30 / 2 = 15 h."
+  },
+  {
+    "id": "matte-textuppgift-033",
+    "area": "matte",
+    "subtype": "textuppgift",
+    "difficulty": 3,
+    "source": "bank",
+    "prompt": "Du kör 60 km i 60 km/h och sedan samma 60 km tillbaka i 30 km/h. Vad är medelhastigheten för hela resan?",
+    "options": [
+      "45 km/h",
+      "50 km/h",
+      "40 km/h",
+      "42 km/h",
+      "36 km/h"
+    ],
+    "correct": 2,
+    "explanation": "Snabbväg: dit tar 1 h och hem 2 h, totalt 120 km på 3 h = 40 km/h. Ta inte medelvärdet av hastigheterna."
+  },
+  {
+    "id": "matte-textuppgift-034",
+    "area": "matte",
+    "subtype": "textuppgift",
+    "difficulty": 3,
+    "source": "bank",
+    "prompt": "En jacka kostar 800 kr. Priset höjs först med 25 % och sänks sedan med 20 %. Vad kostar jackan nu?",
+    "options": [
+      "760 kr",
+      "840 kr",
+      "780 kr",
+      "800 kr",
+      "820 kr"
+    ],
+    "correct": 3,
+    "explanation": "Snabbväg: förändringsfaktorn blir 1,25 · 0,8 = 1, så priset är oförändrat: 800 kr."
+  },
+  {
+    "id": "matte-textuppgift-035",
+    "area": "matte",
+    "subtype": "textuppgift",
+    "difficulty": 3,
+    "source": "bank",
+    "prompt": "Två tåg startar kl. 10.00 från två städer som ligger 280 km från varandra och kör mot varandra. Det ena kör i 80 km/h och det andra i 60 km/h. När möts de?",
+    "options": [
+      "kl. 11.30",
+      "kl. 12.20",
+      "kl. 13.30",
+      "kl. 11.45",
+      "kl. 12.00"
+    ],
+    "correct": 4,
+    "explanation": "Snabbväg: avståndet minskar med 80 + 60 = 140 km/h, och 280 / 140 = 2 h. De möts kl. 12.00."
   }
 ]

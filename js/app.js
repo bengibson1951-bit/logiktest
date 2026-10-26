@@ -12,7 +12,8 @@ import { roundMetrics, subtypeStats, flags, weights, targetSeconds, FLAG_LABELS,
 import { renderFigure, renderCell } from "./svg.js";
 import { load, save, setResume, clearResume, addRecent } from "./store.js";
 
-const CLIENT_VERSION = "1.0.0";
+const CLIENT_VERSION = "1.1.0";
+const SKIP_NUDGE_MS = 30000;
 const app = document.getElementById("app");
 const db = createDb({ url: SUPABASE_URL, anonKey: SUPABASE_ANON_KEY });
 const state = load();
@@ -220,7 +221,7 @@ function runRound(round) {
         <div class="options ${figs ? "figs" : ""}">
           ${q.options.map((o, i) => `<button class="opt" data-i="${i}"><span class="key">${i + 1}</span><span>${optionHtml(o)}</span></button>`).join("")}
         </div>
-        <div class="skiprow"><span class="muted small">Tangent 1–${q.options.length} svarar · S hoppar över</span><button id="skip">Hoppa över →</button></div>
+        <div class="skiprow"><span class="muted small" id="hint">Tangent 1–${q.options.length} svarar · S hoppar över</span><button id="skip">Hoppa över →</button></div>
       </div>`,
       (e) => {
         const n = Number(e.key);
@@ -249,6 +250,12 @@ function runRound(round) {
       const left = round.remainingMs - timeMs;
       const el = document.getElementById("clock");
       if (el) { el.textContent = mmss(left); el.classList.toggle("low", left < 60000); }
+      // Gentle nudge: one stuck question costs more than a skipped one.
+      const hint = document.getElementById("hint");
+      if (hint && timeMs > SKIP_NUDGE_MS && !hint.classList.contains("nudge")) {
+        hint.classList.add("nudge");
+        hint.textContent = "Över 30 s – överväg att hoppa över (S) och ta poängen på nästa fråga.";
+      }
       if (left <= 0) {
         locked = true;
         clearInterval(tickTimer);
