@@ -113,7 +113,7 @@ export function rotation(seed, difficulty) {
   const distractors = shuffle(rand, rotations(mirror(shape))).slice(0, 3).map((cells) => ({ t: "poly", cells }));
   return makeQuestion({
     name: "rotation", seed, difficulty, rand,
-    prompt: "Vilket alternativ är samma figur som den till vänster, bara vriden (inte spegelvänd)?",
+    prompt: "Vilket alternativ är samma figur som den ovan, bara vriden (inte spegelvänd)?",
     answer, distractors,
     explanation: "De andra alternativen är spegelvända – de går inte att få fram bara genom att vrida figuren.",
     figure: { kind: "single", cell: { t: "poly", cells: shape } },
