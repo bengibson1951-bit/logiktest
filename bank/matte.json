@@ -1,0 +1,682 @@
+[
+  {
+    "id": "matte-procent_brak-001",
+    "area": "matte",
+    "subtype": "procent_brak",
+    "difficulty": 1,
+    "source": "bank",
+    "prompt": "En vara kostar 400 kr och priset höjs med 15 %. Vad blir det nya priset?",
+    "options": [
+      "415 kr",
+      "440 kr",
+      "460 kr",
+      "475 kr",
+      "600 kr"
+    ],
+    "correct": 2,
+    "explanation": "Höjningen är 15 % av 400 = 60 kr. Nytt pris: 400 + 60 = 460 kr."
+  },
+  {
+    "id": "matte-procent_brak-002",
+    "area": "matte",
+    "subtype": "procent_brak",
+    "difficulty": 1,
+    "source": "bank",
+    "prompt": "Hur mycket är 25 % av 80?",
+    "options": [
+      "20",
+      "25",
+      "32",
+      "40",
+      "16"
+    ],
+    "correct": 0,
+    "explanation": "25 % är en fjärdedel, och 80 / 4 = 20."
+  },
+  {
+    "id": "matte-procent_brak-003",
+    "area": "matte",
+    "subtype": "procent_brak",
+    "difficulty": 1,
+    "source": "bank",
+    "prompt": "Vilket av bråken är störst?",
+    "options": [
+      "2/3",
+      "5/8",
+      "7/10",
+      "3/4",
+      "3/5"
+    ],
+    "correct": 3,
+    "explanation": "Som decimaltal: 2/3 ≈ 0,67, 5/8 = 0,625, 7/10 = 0,7, 3/4 = 0,75, 3/5 = 0,6. Störst är 3/4."
+  },
+  {
+    "id": "matte-procent_brak-004",
+    "area": "matte",
+    "subtype": "procent_brak",
+    "difficulty": 1,
+    "source": "bank",
+    "prompt": "Hur många procent är 1/5?",
+    "options": [
+      "15 %",
+      "20 %",
+      "25 %",
+      "50 %",
+      "5 %"
+    ],
+    "correct": 1,
+    "explanation": "1/5 = 0,2 = 20 %."
+  },
+  {
+    "id": "matte-procent_brak-005",
+    "area": "matte",
+    "subtype": "procent_brak",
+    "difficulty": 1,
+    "source": "bank",
+    "prompt": "En jacka kostar 600 kr. På rean sänks priset med 30 %. Vad kostar jackan på rean?",
+    "options": [
+      "180 kr",
+      "570 kr",
+      "420 kr",
+      "450 kr",
+      "400 kr"
+    ],
+    "correct": 2,
+    "explanation": "30 % av 600 är 180 kr. 600 − 180 = 420 kr."
+  },
+  {
+    "id": "matte-procent_brak-006",
+    "area": "matte",
+    "subtype": "procent_brak",
+    "difficulty": 1,
+    "source": "bank",
+    "prompt": "Vad är 3/8 + 1/8? Svara förkortat.",
+    "options": [
+      "4/16",
+      "1/2",
+      "3/4",
+      "2/8",
+      "5/8"
+    ],
+    "correct": 1,
+    "explanation": "3/8 + 1/8 = 4/8, som förkortas till 1/2."
+  },
+  {
+    "id": "matte-procent_brak-007",
+    "area": "matte",
+    "subtype": "procent_brak",
+    "difficulty": 1,
+    "source": "bank",
+    "prompt": "I en klass med 30 elever är förhållandet pojkar:flickor 2:3. Hur många flickor finns det?",
+    "options": [
+      "12",
+      "15",
+      "18",
+      "20",
+      "10"
+    ],
+    "correct": 2,
+    "explanation": "Det finns 2 + 3 = 5 delar, så en del är 30 / 5 = 6. Flickor: 3 · 6 = 18."
+  },
+  {
+    "id": "matte-procent_brak-008",
+    "area": "matte",
+    "subtype": "procent_brak",
+    "difficulty": 2,
+    "source": "bank",
+    "prompt": "Ett pris höjs från 250 kr till 300 kr. Hur många procent är höjningen?",
+    "options": [
+      "20 %",
+      "16,7 %",
+      "25 %",
+      "50 %",
+      "30 %"
+    ],
+    "correct": 0,
+    "explanation": "Ökningen är 50 kr. 50 / 250 = 0,2 = 20 %."
+  },
+  {
+    "id": "matte-procent_brak-009",
+    "area": "matte",
+    "subtype": "procent_brak",
+    "difficulty": 2,
+    "source": "bank",
+    "prompt": "En vara kostar 500 kr. Priset höjs först med 10 % och sänks sedan med 10 %. Vad blir priset?",
+    "options": [
+      "500 kr",
+      "495 kr",
+      "505 kr",
+      "490 kr",
+      "450 kr"
+    ],
+    "correct": 1,
+    "explanation": "500 · 1,1 = 550 kr. 550 · 0,9 = 495 kr."
+  },
+  {
+    "id": "matte-procent_brak-010",
+    "area": "matte",
+    "subtype": "procent_brak",
+    "difficulty": 2,
+    "source": "bank",
+    "prompt": "Hur mycket är 40 % av 35?",
+    "options": [
+      "12",
+      "15",
+      "14",
+      "16",
+      "21"
+    ],
+    "correct": 2,
+    "explanation": "10 % av 35 är 3,5, så 40 % är 4 · 3,5 = 14."
+  },
+  {
+    "id": "matte-procent_brak-011",
+    "area": "matte",
+    "subtype": "procent_brak",
+    "difficulty": 2,
+    "source": "bank",
+    "prompt": "Vilket av bråken ligger närmast 1/2?",
+    "options": [
+      "5/9",
+      "4/7",
+      "7/15",
+      "3/5",
+      "2/3"
+    ],
+    "correct": 2,
+    "explanation": "7/15 ≈ 0,467 skiljer sig 0,033 från 0,5, medan 5/9 ≈ 0,556 skiljer sig 0,056. Övriga ligger längre bort."
+  },
+  {
+    "id": "matte-procent_brak-012",
+    "area": "matte",
+    "subtype": "procent_brak",
+    "difficulty": 2,
+    "source": "bank",
+    "prompt": "Skriv 0,35 som ett förkortat bråk.",
+    "options": [
+      "3/5",
+      "7/2",
+      "35/10",
+      "1/3",
+      "7/20"
+    ],
+    "correct": 4,
+    "explanation": "0,35 = 35/100. Dela täljare och nämnare med 5: 7/20."
+  },
+  {
+    "id": "matte-procent_brak-013",
+    "area": "matte",
+    "subtype": "procent_brak",
+    "difficulty": 2,
+    "source": "bank",
+    "prompt": "En vara kostar 500 kr inklusive 25 % moms. Vad kostar den utan moms?",
+    "options": [
+      "375 kr",
+      "400 kr",
+      "475 kr",
+      "450 kr",
+      "125 kr"
+    ],
+    "correct": 1,
+    "explanation": "Priset med moms är 125 % av priset utan moms. 500 / 1,25 = 400 kr."
+  },
+  {
+    "id": "matte-procent_brak-014",
+    "area": "matte",
+    "subtype": "procent_brak",
+    "difficulty": 2,
+    "source": "bank",
+    "prompt": "Saft blandas med vatten: 1 del saft på 4 delar vatten. Hur mycket saft behövs till 2 liter färdig dryck?",
+    "options": [
+      "0,5 l",
+      "0,4 l",
+      "0,25 l",
+      "1,6 l",
+      "0,8 l"
+    ],
+    "correct": 1,
+    "explanation": "Blandningen har 1 + 4 = 5 delar. Saften är 1/5 av 2 liter = 0,4 l."
+  },
+  {
+    "id": "matte-procent_brak-015",
+    "area": "matte",
+    "subtype": "procent_brak",
+    "difficulty": 3,
+    "source": "bank",
+    "prompt": "Ett pris sänks med 20 %. Med hur många procent måste det nya priset höjas för att bli lika med det ursprungliga?",
+    "options": [
+      "20 %",
+      "15 %",
+      "30 %",
+      "25 %",
+      "22,5 %"
+    ],
+    "correct": 3,
+    "explanation": "Efter sänkningen är priset 0,8 av originalet. 1 / 0,8 = 1,25, alltså en höjning med 25 %."
+  },
+  {
+    "id": "matte-procent_brak-016",
+    "area": "matte",
+    "subtype": "procent_brak",
+    "difficulty": 3,
+    "source": "bank",
+    "prompt": "Hur mycket är 2/3 av 3/4 av 120?",
+    "options": [
+      "60",
+      "80",
+      "90",
+      "45",
+      "40"
+    ],
+    "correct": 0,
+    "explanation": "3/4 av 120 är 90. 2/3 av 90 är 60."
+  },
+  {
+    "id": "matte-procent_brak-017",
+    "area": "matte",
+    "subtype": "procent_brak",
+    "difficulty": 3,
+    "source": "bank",
+    "prompt": "Efter 15 % rabatt kostar en vara 340 kr. Vad var det ordinarie priset?",
+    "options": [
+      "391 kr",
+      "400 kr",
+      "355 kr",
+      "425 kr",
+      "380 kr"
+    ],
+    "correct": 1,
+    "explanation": "340 kr är 85 % av ordinarie pris. 340 / 0,85 = 400 kr."
+  },
+  {
+    "id": "matte-procent_brak-018",
+    "area": "matte",
+    "subtype": "procent_brak",
+    "difficulty": 3,
+    "source": "bank",
+    "prompt": "En lön på 30 000 kr höjs med 4 % ett år och med 5 % året därpå. Vad blir lönen?",
+    "options": [
+      "32 700 kr",
+      "32 400 kr",
+      "33 000 kr",
+      "32 850 kr",
+      "32 760 kr"
+    ],
+    "correct": 4,
+    "explanation": "30 000 · 1,04 = 31 200 kr. 31 200 · 1,05 = 32 760 kr."
+  },
+  {
+    "id": "matte-procent_brak-019",
+    "area": "matte",
+    "subtype": "procent_brak",
+    "difficulty": 3,
+    "source": "bank",
+    "prompt": "Förhållandet A:B är 3:5 och förhållandet B:C är 2:3. Vad är förhållandet A:C?",
+    "options": [
+      "3:8",
+      "1:2",
+      "2:5",
+      "5:9",
+      "2:3"
+    ],
+    "correct": 2,
+    "explanation": "Gör B lika: A:B = 6:10 och B:C = 10:15. Då är A:C = 6:15 = 2:5."
+  },
+  {
+    "id": "matte-procent_brak-020",
+    "area": "matte",
+    "subtype": "procent_brak",
+    "difficulty": 3,
+    "source": "bank",
+    "prompt": "12 är 15 % av vilket tal?",
+    "options": [
+      "1,8",
+      "60",
+      "80",
+      "100",
+      "120"
+    ],
+    "correct": 2,
+    "explanation": "1 % motsvarar 12 / 15 = 0,8. 100 % är då 80."
+  },
+  {
+    "id": "matte-textuppgift-001",
+    "area": "matte",
+    "subtype": "textuppgift",
+    "difficulty": 1,
+    "source": "bank",
+    "prompt": "En bil kör i 80 km/h i 2,5 timmar. Hur långt kommer den?",
+    "options": [
+      "160 km",
+      "180 km",
+      "200 km",
+      "220 km",
+      "32 km"
+    ],
+    "correct": 2,
+    "explanation": "Sträcka = fart · tid = 80 · 2,5 = 200 km."
+  },
+  {
+    "id": "matte-textuppgift-002",
+    "area": "matte",
+    "subtype": "textuppgift",
+    "difficulty": 1,
+    "source": "bank",
+    "prompt": "3 pennor kostar 18 kr. Vad kostar 7 pennor?",
+    "options": [
+      "36 kr",
+      "42 kr",
+      "48 kr",
+      "54 kr",
+      "126 kr"
+    ],
+    "correct": 1,
+    "explanation": "En penna kostar 18 / 3 = 6 kr. 7 · 6 = 42 kr."
+  },
+  {
+    "id": "matte-textuppgift-003",
+    "area": "matte",
+    "subtype": "textuppgift",
+    "difficulty": 1,
+    "source": "bank",
+    "prompt": "Anna är 12 år och hennes pappa är tre gånger så gammal. Hur gammal är pappan när Anna fyller 20?",
+    "options": [
+      "44 år",
+      "60 år",
+      "48 år",
+      "40 år",
+      "56 år"
+    ],
+    "correct": 0,
+    "explanation": "Pappan är 36 år nu. Om 8 år är han 36 + 8 = 44 år."
+  },
+  {
+    "id": "matte-textuppgift-004",
+    "area": "matte",
+    "subtype": "textuppgift",
+    "difficulty": 1,
+    "source": "bank",
+    "prompt": "Ett tåg avgår 10:45 och kommer fram 13:20. Hur lång är resan?",
+    "options": [
+      "2 h 25 min",
+      "3 h 35 min",
+      "3 h 25 min",
+      "2 h 35 min",
+      "2 h 15 min"
+    ],
+    "correct": 3,
+    "explanation": "Från 10:45 till 13:00 är 2 h 15 min, plus 20 min blir 2 h 35 min."
+  },
+  {
+    "id": "matte-textuppgift-005",
+    "area": "matte",
+    "subtype": "textuppgift",
+    "difficulty": 1,
+    "source": "bank",
+    "prompt": "Du köper 3 varor som kostar 89 kr styck och betalar med en 500-lapp. Hur mycket får du tillbaka?",
+    "options": [
+      "267 kr",
+      "243 kr",
+      "223 kr",
+      "411 kr",
+      "233 kr"
+    ],
+    "correct": 4,
+    "explanation": "3 · 89 = 267 kr. 500 − 267 = 233 kr."
+  },
+  {
+    "id": "matte-textuppgift-006",
+    "area": "matte",
+    "subtype": "textuppgift",
+    "difficulty": 1,
+    "source": "bank",
+    "prompt": "Lisa springer 5 km på 25 minuter. Hur många minuter tar varje kilometer i snitt?",
+    "options": [
+      "4 min",
+      "5 min",
+      "6 min",
+      "5,5 min",
+      "20 min"
+    ],
+    "correct": 1,
+    "explanation": "25 minuter / 5 km = 5 minuter per kilometer."
+  },
+  {
+    "id": "matte-textuppgift-007",
+    "area": "matte",
+    "subtype": "textuppgift",
+    "difficulty": 1,
+    "source": "bank",
+    "prompt": "4 arbetare bygger ett staket på 6 dagar. Hur många dagar tar det för 8 lika snabba arbetare?",
+    "options": [
+      "12",
+      "4",
+      "2",
+      "3",
+      "6"
+    ],
+    "correct": 3,
+    "explanation": "Arbetet är 4 · 6 = 24 arbetsdagar. 24 / 8 = 3 dagar."
+  },
+  {
+    "id": "matte-textuppgift-008",
+    "area": "matte",
+    "subtype": "textuppgift",
+    "difficulty": 2,
+    "source": "bank",
+    "prompt": "Erik cyklar 18 km på 45 minuter. Vad är hans medelfart i km/h?",
+    "options": [
+      "20 km/h",
+      "24 km/h",
+      "27 km/h",
+      "30 km/h",
+      "36 km/h"
+    ],
+    "correct": 1,
+    "explanation": "45 minuter är 0,75 h. 18 / 0,75 = 24 km/h."
+  },
+  {
+    "id": "matte-textuppgift-009",
+    "area": "matte",
+    "subtype": "textuppgift",
+    "difficulty": 2,
+    "source": "bank",
+    "prompt": "Pump A fyller en tank på 3 timmar och pump B på 6 timmar. Hur lång tid tar det om båda pumpar samtidigt?",
+    "options": [
+      "2 h",
+      "4,5 h",
+      "9 h",
+      "1,5 h",
+      "3 h"
+    ],
+    "correct": 0,
+    "explanation": "Per timme fylls 1/3 + 1/6 = 1/2 tank. Hela tanken tar då 2 h."
+  },
+  {
+    "id": "matte-textuppgift-010",
+    "area": "matte",
+    "subtype": "textuppgift",
+    "difficulty": 2,
+    "source": "bank",
+    "prompt": "Summan av två tal är 50 och skillnaden mellan dem är 14. Vilket är det största talet?",
+    "options": [
+      "36",
+      "18",
+      "32",
+      "25",
+      "34"
+    ],
+    "correct": 2,
+    "explanation": "Största talet = (summa + skillnad) / 2 = (50 + 14) / 2 = 32."
+  },
+  {
+    "id": "matte-textuppgift-011",
+    "area": "matte",
+    "subtype": "textuppgift",
+    "difficulty": 2,
+    "source": "bank",
+    "prompt": "En mamma är fyra gånger så gammal som sin son. Om 5 år är hon tre gånger så gammal som han. Hur gammal är sonen nu?",
+    "options": [
+      "5 år",
+      "15 år",
+      "8 år",
+      "12 år",
+      "10 år"
+    ],
+    "correct": 4,
+    "explanation": "Om sonen är s år gäller 4s + 5 = 3(s + 5), alltså s = 10. Mamman är 40 och om 5 år 45 = 3 · 15."
+  },
+  {
+    "id": "matte-textuppgift-012",
+    "area": "matte",
+    "subtype": "textuppgift",
+    "difficulty": 2,
+    "source": "bank",
+    "prompt": "En bil drar 0,6 liter per mil och bensinen kostar 20 kr/liter. Vad kostar bränslet för en resa på 250 km?",
+    "options": [
+      "300 kr",
+      "3 000 kr",
+      "150 kr",
+      "250 kr",
+      "360 kr"
+    ],
+    "correct": 0,
+    "explanation": "250 km = 25 mil. 25 · 0,6 = 15 liter, och 15 · 20 = 300 kr."
+  },
+  {
+    "id": "matte-textuppgift-013",
+    "area": "matte",
+    "subtype": "textuppgift",
+    "difficulty": 2,
+    "source": "bank",
+    "prompt": "Lisa har dubbelt så mycket pengar som Per. Tillsammans har de 360 kr. Hur mycket har Lisa?",
+    "options": [
+      "120 kr",
+      "180 kr",
+      "240 kr",
+      "270 kr",
+      "720 kr"
+    ],
+    "correct": 2,
+    "explanation": "Pengarna delas i 1 + 2 = 3 delar om 120 kr. Lisa har 2 · 120 = 240 kr."
+  },
+  {
+    "id": "matte-textuppgift-014",
+    "area": "matte",
+    "subtype": "textuppgift",
+    "difficulty": 2,
+    "source": "bank",
+    "prompt": "En vuxenbiljett kostar 110 kr och en barnbiljett 60 kr. Vad kostar det för 2 vuxna och 3 barn?",
+    "options": [
+      "390 kr",
+      "430 kr",
+      "340 kr",
+      "400 kr",
+      "510 kr"
+    ],
+    "correct": 3,
+    "explanation": "2 · 110 = 220 kr och 3 · 60 = 180 kr. Totalt 400 kr."
+  },
+  {
+    "id": "matte-textuppgift-015",
+    "area": "matte",
+    "subtype": "textuppgift",
+    "difficulty": 3,
+    "source": "bank",
+    "prompt": "Du kör 60 km i 60 km/h och sedan samma väg tillbaka i 40 km/h. Vad är medelfarten för hela resan?",
+    "options": [
+      "50 km/h",
+      "48 km/h",
+      "45 km/h",
+      "52 km/h",
+      "100 km/h"
+    ],
+    "correct": 1,
+    "explanation": "Tiden blir 1 h + 1,5 h = 2,5 h för 120 km. 120 / 2,5 = 48 km/h."
+  },
+  {
+    "id": "matte-textuppgift-016",
+    "area": "matte",
+    "subtype": "textuppgift",
+    "difficulty": 3,
+    "source": "bank",
+    "prompt": "10 liter dryck innehåller 30 % saft. Man häller i 5 liter vatten. Hur stor andel saft innehåller drycken nu?",
+    "options": [
+      "15 %",
+      "25 %",
+      "20 %",
+      "10 %",
+      "22,5 %"
+    ],
+    "correct": 2,
+    "explanation": "Saften är 0,3 · 10 = 3 liter av totalt 15 liter. 3 / 15 = 20 %."
+  },
+  {
+    "id": "matte-textuppgift-017",
+    "area": "matte",
+    "subtype": "textuppgift",
+    "difficulty": 3,
+    "source": "bank",
+    "prompt": "Två tåg är 300 km från varandra och kör mot varandra i 70 km/h och 80 km/h. Efter hur lång tid möts de?",
+    "options": [
+      "2,5 h",
+      "3 h",
+      "1,5 h",
+      "2 h",
+      "4 h"
+    ],
+    "correct": 3,
+    "explanation": "Avståndet minskar med 70 + 80 = 150 km/h. 300 / 150 = 2 h."
+  },
+  {
+    "id": "matte-textuppgift-018",
+    "area": "matte",
+    "subtype": "textuppgift",
+    "difficulty": 3,
+    "source": "bank",
+    "prompt": "Per målar ett rum på 4 timmar och Ola målar samma rum på 12 timmar. Hur lång tid tar det om de målar tillsammans?",
+    "options": [
+      "8 h",
+      "3 h",
+      "2 h",
+      "6 h",
+      "16 h"
+    ],
+    "correct": 1,
+    "explanation": "Per timme klarar de 1/4 + 1/12 = 4/12 = 1/3 rum. Hela rummet tar 3 h."
+  },
+  {
+    "id": "matte-textuppgift-019",
+    "area": "matte",
+    "subtype": "textuppgift",
+    "difficulty": 3,
+    "source": "bank",
+    "prompt": "Medelåldern för 5 personer är 30 år. När en sjätte person kommer blir medelåldern 32 år. Hur gammal är den nya personen?",
+    "options": [
+      "32 år",
+      "34 år",
+      "42 år",
+      "40 år",
+      "62 år"
+    ],
+    "correct": 2,
+    "explanation": "Summan av åldrarna ökar från 5 · 30 = 150 till 6 · 32 = 192. 192 − 150 = 42 år."
+  },
+  {
+    "id": "matte-textuppgift-020",
+    "area": "matte",
+    "subtype": "textuppgift",
+    "difficulty": 3,
+    "source": "bank",
+    "prompt": "Tre personer delar på en hyra och betalar 4 500 kr var. En fjärde person flyttar in och hyran delas lika på fyra. Hur mycket betalar var och en nu?",
+    "options": [
+      "3 500 kr",
+      "3 000 kr",
+      "3 125 kr",
+      "1 125 kr",
+      "3 375 kr"
+    ],
+    "correct": 4,
+    "explanation": "Hyran är 3 · 4 500 = 13 500 kr. 13 500 / 4 = 3 375 kr."
+  }
+]

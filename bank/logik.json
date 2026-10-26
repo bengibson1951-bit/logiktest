@@ -1,0 +1,590 @@
+[
+  {
+    "id": "logik-syllogism-001",
+    "area": "logik",
+    "subtype": "syllogism",
+    "difficulty": 1,
+    "source": "bank",
+    "prompt": "Alla hundar är däggdjur. Alla däggdjur är djur.\nPåstående: Alla hundar är djur.",
+    "options": [
+      "Sant",
+      "Falskt",
+      "Möjligt",
+      "Osannolikt"
+    ],
+    "correct": 0,
+    "explanation": "Hundar ingår i däggdjuren, som i sin tur ingår i djuren. Därför måste alla hundar vara djur."
+  },
+  {
+    "id": "logik-syllogism-002",
+    "area": "logik",
+    "subtype": "syllogism",
+    "difficulty": 1,
+    "source": "bank",
+    "prompt": "Alla rosor är blommor. Inga blommor är stenar.\nPåstående: Någon ros är en sten.",
+    "options": [
+      "Sant",
+      "Falskt",
+      "Möjligt",
+      "Osannolikt"
+    ],
+    "correct": 1,
+    "explanation": "Varje ros är en blomma och ingen blomma är en sten. Alltså kan ingen ros vara en sten."
+  },
+  {
+    "id": "logik-syllogism-003",
+    "area": "logik",
+    "subtype": "syllogism",
+    "difficulty": 1,
+    "source": "bank",
+    "prompt": "Alla piloter är anställda. Vissa anställda är chefer.\nPåstående: Vissa piloter är chefer.",
+    "options": [
+      "Sant",
+      "Falskt",
+      "Möjligt",
+      "Osannolikt"
+    ],
+    "correct": 2,
+    "explanation": "Cheferna kan finnas bland piloterna, men de kan lika gärna vara andra anställda. Påståendet kan stämma men bevisas inte."
+  },
+  {
+    "id": "logik-syllogism-004",
+    "area": "logik",
+    "subtype": "syllogism",
+    "difficulty": 1,
+    "source": "bank",
+    "prompt": "De flesta elever i klassen har cykel. Lisa går i klassen.\nPåstående: Lisa har inte cykel.",
+    "options": [
+      "Sant",
+      "Falskt",
+      "Möjligt",
+      "Osannolikt"
+    ],
+    "correct": 3,
+    "explanation": "Eftersom de flesta i klassen har cykel är det troligt att Lisa har det. Att hon saknar cykel är osannolikt men inte uteslutet."
+  },
+  {
+    "id": "logik-syllogism-005",
+    "area": "logik",
+    "subtype": "syllogism",
+    "difficulty": 1,
+    "source": "bank",
+    "prompt": "Alla deltagare fick ett diplom. Johan var deltagare.\nPåstående: Johan fick inget diplom.",
+    "options": [
+      "Sant",
+      "Falskt",
+      "Möjligt",
+      "Osannolikt"
+    ],
+    "correct": 1,
+    "explanation": "Johan var deltagare och alla deltagare fick diplom. Påståendet motsäger premisserna."
+  },
+  {
+    "id": "logik-syllogism-006",
+    "area": "logik",
+    "subtype": "syllogism",
+    "difficulty": 2,
+    "source": "bank",
+    "prompt": "Inga fiskar är fåglar. Alla laxar är fiskar.\nPåstående: Inga laxar är fåglar.",
+    "options": [
+      "Sant",
+      "Falskt",
+      "Möjligt",
+      "Osannolikt"
+    ],
+    "correct": 0,
+    "explanation": "Alla laxar är fiskar och ingen fisk är en fågel. Därför kan ingen lax vara en fågel."
+  },
+  {
+    "id": "logik-syllogism-007",
+    "area": "logik",
+    "subtype": "syllogism",
+    "difficulty": 2,
+    "source": "bank",
+    "prompt": "Alla snickare är hantverkare. Vissa löpare är snickare.\nPåstående: Vissa löpare är hantverkare.",
+    "options": [
+      "Sant",
+      "Falskt",
+      "Möjligt",
+      "Osannolikt"
+    ],
+    "correct": 0,
+    "explanation": "De löpare som är snickare måste också vara hantverkare. Alltså är vissa löpare hantverkare."
+  },
+  {
+    "id": "logik-syllogism-008",
+    "area": "logik",
+    "subtype": "syllogism",
+    "difficulty": 2,
+    "source": "bank",
+    "prompt": "Alla kassörer är anställda. Inga anställda är under 16 år.\nPåstående: Vissa kassörer är under 16 år.",
+    "options": [
+      "Sant",
+      "Falskt",
+      "Möjligt",
+      "Osannolikt"
+    ],
+    "correct": 1,
+    "explanation": "Kassörer är anställda och ingen anställd är under 16 år. Därför kan ingen kassör vara under 16."
+  },
+  {
+    "id": "logik-syllogism-009",
+    "area": "logik",
+    "subtype": "syllogism",
+    "difficulty": 2,
+    "source": "bank",
+    "prompt": "Alla kockar i företaget har körkort. Alla säljare i företaget har körkort.\nPåstående: Alla kockar i företaget är säljare.",
+    "options": [
+      "Sant",
+      "Falskt",
+      "Möjligt",
+      "Osannolikt"
+    ],
+    "correct": 2,
+    "explanation": "Att två grupper delar en egenskap säger inget om att den ena ingår i den andra. Påståendet kan stämma men följer inte."
+  },
+  {
+    "id": "logik-syllogism-010",
+    "area": "logik",
+    "subtype": "syllogism",
+    "difficulty": 2,
+    "source": "bank",
+    "prompt": "Få av bolagets bilar är elbilar. Bil nr 7 tillhör bolaget.\nPåstående: Bil nr 7 är en elbil.",
+    "options": [
+      "Sant",
+      "Falskt",
+      "Möjligt",
+      "Osannolikt"
+    ],
+    "correct": 3,
+    "explanation": "Endast få av bolagets bilar är elbilar, så det är osannolikt att just bil nr 7 är det. Det är dock inte uteslutet."
+  },
+  {
+    "id": "logik-syllogism-011",
+    "area": "logik",
+    "subtype": "syllogism",
+    "difficulty": 3,
+    "source": "bank",
+    "prompt": "Alla tulpaner är lökväxter. Inga lökväxter är träd. Alla ekar är träd.\nPåstående: Någon ek är en tulpan.",
+    "options": [
+      "Sant",
+      "Falskt",
+      "Möjligt",
+      "Osannolikt"
+    ],
+    "correct": 1,
+    "explanation": "Tulpaner är lökväxter och kan därför inte vara träd, men alla ekar är träd. En ek kan alltså aldrig vara en tulpan."
+  },
+  {
+    "id": "logik-syllogism-012",
+    "area": "logik",
+    "subtype": "syllogism",
+    "difficulty": 3,
+    "source": "bank",
+    "prompt": "De flesta i laget är över 30 år. Alla i laget som är över 30 år har spelat i minst fem år. Sara är med i laget.\nPåstående: Sara har spelat i mindre än fem år.",
+    "options": [
+      "Sant",
+      "Falskt",
+      "Möjligt",
+      "Osannolikt"
+    ],
+    "correct": 3,
+    "explanation": "Sara är troligen över 30 och har i så fall spelat i minst fem år. Påståendet är därför osannolikt, men det kan inte uteslutas."
+  },
+  {
+    "id": "logik-syllogism-013",
+    "area": "logik",
+    "subtype": "syllogism",
+    "difficulty": 3,
+    "source": "bank",
+    "prompt": "Alla som arbetar natt får tillägg. Ingen som får tillägg har lägsta lönen. Omar har lägsta lönen.\nPåstående: Omar arbetar inte natt.",
+    "options": [
+      "Sant",
+      "Falskt",
+      "Möjligt",
+      "Osannolikt"
+    ],
+    "correct": 0,
+    "explanation": "Om Omar arbetade natt skulle han få tillägg och då inte ha lägsta lönen. Eftersom han har lägsta lönen kan han inte arbeta natt."
+  },
+  {
+    "id": "logik-syllogism-014",
+    "area": "logik",
+    "subtype": "syllogism",
+    "difficulty": 3,
+    "source": "bank",
+    "prompt": "Inga av gästerna är vegetarianer. Inga vegetarianer åt köttbullar.\nPåstående: Ingen av gästerna åt köttbullar.",
+    "options": [
+      "Sant",
+      "Falskt",
+      "Möjligt",
+      "Osannolikt"
+    ],
+    "correct": 2,
+    "explanation": "Premisserna säger bara att vegetarianerna inte åt köttbullar. Om gästerna åt köttbullar eller inte framgår inte."
+  },
+  {
+    "id": "logik-udda_ord-001",
+    "area": "logik",
+    "subtype": "udda_ord",
+    "difficulty": 1,
+    "source": "bank",
+    "prompt": "Vilket ord passar inte ihop med de andra?",
+    "options": [
+      "äpple",
+      "päron",
+      "morot",
+      "plommon",
+      "persika"
+    ],
+    "correct": 2,
+    "explanation": "Morot är en rotfrukt/grönsak. De andra är frukter."
+  },
+  {
+    "id": "logik-udda_ord-002",
+    "area": "logik",
+    "subtype": "udda_ord",
+    "difficulty": 1,
+    "source": "bank",
+    "prompt": "Vilket ord passar inte ihop med de andra?",
+    "options": [
+      "hammare",
+      "skruvmejsel",
+      "tång",
+      "såg",
+      "gaffel"
+    ],
+    "correct": 4,
+    "explanation": "Gaffel är ett bestick. De andra är verktyg."
+  },
+  {
+    "id": "logik-udda_ord-003",
+    "area": "logik",
+    "subtype": "udda_ord",
+    "difficulty": 1,
+    "source": "bank",
+    "prompt": "Vilket ord passar inte ihop med de andra?",
+    "options": [
+      "juli",
+      "måndag",
+      "tisdag",
+      "fredag",
+      "söndag"
+    ],
+    "correct": 0,
+    "explanation": "Juli är en månad. De andra är veckodagar."
+  },
+  {
+    "id": "logik-udda_ord-004",
+    "area": "logik",
+    "subtype": "udda_ord",
+    "difficulty": 1,
+    "source": "bank",
+    "prompt": "Vilket ord passar inte ihop med de andra?",
+    "options": [
+      "ros",
+      "tulpan",
+      "lilja",
+      "ek",
+      "nejlika"
+    ],
+    "correct": 3,
+    "explanation": "Ek är ett träd. De andra är blommor."
+  },
+  {
+    "id": "logik-udda_ord-005",
+    "area": "logik",
+    "subtype": "udda_ord",
+    "difficulty": 2,
+    "source": "bank",
+    "prompt": "Vilket ord passar inte ihop med de andra?",
+    "options": [
+      "violin",
+      "trumpet",
+      "cello",
+      "viola",
+      "kontrabas"
+    ],
+    "correct": 1,
+    "explanation": "Trumpet är ett blåsinstrument. De andra är stråkinstrument."
+  },
+  {
+    "id": "logik-udda_ord-006",
+    "area": "logik",
+    "subtype": "udda_ord",
+    "difficulty": 2,
+    "source": "bank",
+    "prompt": "Vilket ord passar inte ihop med de andra?",
+    "options": [
+      "kilometer",
+      "meter",
+      "centimeter",
+      "millimeter",
+      "liter"
+    ],
+    "correct": 4,
+    "explanation": "Liter är ett mått på volym. De andra är längdmått."
+  },
+  {
+    "id": "logik-udda_ord-007",
+    "area": "logik",
+    "subtype": "udda_ord",
+    "difficulty": 2,
+    "source": "bank",
+    "prompt": "Vilket ord passar inte ihop med de andra?",
+    "options": [
+      "delfin",
+      "tumlare",
+      "haj",
+      "späckhuggare",
+      "val"
+    ],
+    "correct": 2,
+    "explanation": "Hajen är en fisk. De andra är valar (däggdjur)."
+  },
+  {
+    "id": "logik-udda_ord-008",
+    "area": "logik",
+    "subtype": "udda_ord",
+    "difficulty": 2,
+    "source": "bank",
+    "prompt": "Vilket ord passar inte ihop med de andra?",
+    "options": [
+      "Mars",
+      "Venus",
+      "Jupiter",
+      "Saturnus",
+      "Månen"
+    ],
+    "correct": 4,
+    "explanation": "Månen är en måne. De andra är planeter."
+  },
+  {
+    "id": "logik-udda_ord-009",
+    "area": "logik",
+    "subtype": "udda_ord",
+    "difficulty": 3,
+    "source": "bank",
+    "prompt": "Vilket ord passar inte ihop med de andra?",
+    "options": [
+      "koppar",
+      "brons",
+      "järn",
+      "guld",
+      "silver"
+    ],
+    "correct": 1,
+    "explanation": "Brons är en legering av flera metaller. De andra är rena grundämnen."
+  },
+  {
+    "id": "logik-udda_ord-010",
+    "area": "logik",
+    "subtype": "udda_ord",
+    "difficulty": 3,
+    "source": "bank",
+    "prompt": "Vilket ord passar inte ihop med de andra?",
+    "options": [
+      "januari",
+      "mars",
+      "maj",
+      "juni",
+      "juli"
+    ],
+    "correct": 3,
+    "explanation": "Juni har 30 dagar (och är månad nummer 6). De andra har 31 dagar och udda nummer."
+  },
+  {
+    "id": "logik-udda_ord-011",
+    "area": "logik",
+    "subtype": "udda_ord",
+    "difficulty": 3,
+    "source": "bank",
+    "prompt": "Vilket ord passar inte ihop med de andra?",
+    "options": [
+      "salamander",
+      "krokodil",
+      "ödla",
+      "orm",
+      "sköldpadda"
+    ],
+    "correct": 0,
+    "explanation": "Salamandern är ett groddjur. De andra är kräldjur."
+  },
+  {
+    "id": "logik-udda_ord-012",
+    "area": "logik",
+    "subtype": "udda_ord",
+    "difficulty": 3,
+    "source": "bank",
+    "prompt": "Vilket ord passar inte ihop med de andra?",
+    "options": [
+      "nyckelpiga",
+      "myra",
+      "bi",
+      "spindel",
+      "geting"
+    ],
+    "correct": 3,
+    "explanation": "Spindeln är ett spindeldjur med åtta ben. De andra är insekter med sex ben."
+  },
+  {
+    "id": "logik-slutsats-001",
+    "area": "logik",
+    "subtype": "slutsats",
+    "difficulty": 1,
+    "source": "bank",
+    "prompt": "Biblioteket har öppet måndag till fredag kl. 10–18. På lördagar har det öppet kl. 10–14. På söndagar är det stängt.\nVilken slutsats kan dras?",
+    "options": [
+      "Biblioteket har flest besökare på lördagar.",
+      "Biblioteket är stängt på söndagar.",
+      "Biblioteket stänger kl. 18 på lördagar.",
+      "Biblioteket öppnar tidigare på vardagar än på lördagar."
+    ],
+    "correct": 1,
+    "explanation": "Texten säger uttryckligen att biblioteket är stängt på söndagar. Antalet besökare nämns inte, och öppettiderna motsäger de andra alternativen."
+  },
+  {
+    "id": "logik-slutsats-002",
+    "area": "logik",
+    "subtype": "slutsats",
+    "difficulty": 1,
+    "source": "bank",
+    "prompt": "Alla som arbetar på lagret måste bära skyddsskor. Petra arbetar på lagret.\nVilken slutsats kan dras?",
+    "options": [
+      "Petra tycker att skyddsskor är obekväma.",
+      "Alla som bär skyddsskor arbetar på lagret.",
+      "Petra arbetar inte på kontoret.",
+      "Petra måste bära skyddsskor."
+    ],
+    "correct": 3,
+    "explanation": "Petra arbetar på lagret och regeln gäller alla där. De andra alternativen säger mer än texten gör."
+  },
+  {
+    "id": "logik-slutsats-003",
+    "area": "logik",
+    "subtype": "slutsats",
+    "difficulty": 1,
+    "source": "bank",
+    "prompt": "Tåget mot Göteborg avgick i tid kl. 9.15. Resan tar tre timmar. Tåget höll tidtabellen hela vägen.\nVilken slutsats kan dras?",
+    "options": [
+      "Tåget kom fram till Göteborg kl. 12.15.",
+      "Tåget var fullsatt.",
+      "Tåget kom fram till Göteborg kl. 11.15.",
+      "Det går inga fler tåg till Göteborg den dagen."
+    ],
+    "correct": 0,
+    "explanation": "Avgång 9.15 plus tre timmar utan förseningar ger ankomst 12.15. Övriga alternativ stöds inte eller motsägs av texten."
+  },
+  {
+    "id": "logik-slutsats-004",
+    "area": "logik",
+    "subtype": "slutsats",
+    "difficulty": 2,
+    "source": "bank",
+    "prompt": "I en undersökning svarade 60 % av de tillfrågade att de tränar varje vecka. Av dem som tränar varje vecka svarade hälften att de springer.\nVilken slutsats kan dras?",
+    "options": [
+      "Hälften av alla tillfrågade springer.",
+      "40 % av de tillfrågade tränar aldrig.",
+      "Minst 30 % av de tillfrågade springer.",
+      "Löpning är den populäraste träningsformen."
+    ],
+    "correct": 2,
+    "explanation": "Hälften av 60 % är 30 %, och fler kan springa bland övriga. De 40 % som inte tränar varje vecka kan ändå träna ibland."
+  },
+  {
+    "id": "logik-slutsats-005",
+    "area": "logik",
+    "subtype": "slutsats",
+    "difficulty": 2,
+    "source": "bank",
+    "prompt": "Martin är äldre än Sofia. Sofia är äldre än Karim. Lena är yngre än Karim.\nVilken slutsats kan dras?",
+    "options": [
+      "Sofia är yngst av de fyra.",
+      "Martin är äldst av de fyra.",
+      "Lena är äldre än Sofia.",
+      "Karim är äldre än Martin."
+    ],
+    "correct": 1,
+    "explanation": "Ordningen blir Martin, Sofia, Karim, Lena från äldst till yngst. Martin är alltså äldst."
+  },
+  {
+    "id": "logik-slutsats-006",
+    "area": "logik",
+    "subtype": "slutsats",
+    "difficulty": 2,
+    "source": "bank",
+    "prompt": "Butiken ger 20 % rabatt på alla jackor under januari. Rabatten gäller inte varor som redan är nedsatta. Ahmed köpte en jacka i butiken i januari, och den var inte nedsatt.\nVilken slutsats kan dras?",
+    "options": [
+      "Ahmed betalade fullt pris för jackan.",
+      "Alla jackor i butiken var nedsatta i januari.",
+      "Ahmed köpte jackan på rea.",
+      "Ahmed fick 20 % rabatt på jackan."
+    ],
+    "correct": 3,
+    "explanation": "Jackan köptes i januari och var inte nedsatt, så rabatten gällde. De andra alternativen motsägs av eller stöds inte av texten."
+  },
+  {
+    "id": "logik-slutsats-007",
+    "area": "logik",
+    "subtype": "slutsats",
+    "difficulty": 3,
+    "source": "bank",
+    "prompt": "Alla kurser på skolan som har fler än 20 deltagare får två lärare. Kursen i spanska har bara en lärare.\nVilken slutsats kan dras?",
+    "options": [
+      "Spanskkursen har högst 20 deltagare.",
+      "Spanskkursen har färre än 10 deltagare.",
+      "Kurser med två lärare har alltid fler än 20 deltagare.",
+      "Spanskkursen är skolans minsta kurs."
+    ],
+    "correct": 0,
+    "explanation": "Hade spanskkursen haft fler än 20 deltagare skulle den ha fått två lärare. Den har alltså högst 20; mer exakt än så går inte att säga."
+  },
+  {
+    "id": "logik-slutsats-008",
+    "area": "logik",
+    "subtype": "slutsats",
+    "difficulty": 3,
+    "source": "bank",
+    "prompt": "Om det regnar när konserten ska börja ställs utomhuskonserten in. I lördags genomfördes konserten som planerat.\nVilken slutsats kan dras?",
+    "options": [
+      "Det var soligt i lördags.",
+      "Om det inte regnar blir det alltid konsert.",
+      "Det regnade inte när konserten skulle börja i lördags.",
+      "Utomhuskonserten ställs aldrig in."
+    ],
+    "correct": 2,
+    "explanation": "Regn vid start hade lett till inställd konsert, och konserten blev av. Alltså regnade det inte då; att det var soligt följer inte."
+  },
+  {
+    "id": "logik-slutsats-009",
+    "area": "logik",
+    "subtype": "slutsats",
+    "difficulty": 3,
+    "source": "bank",
+    "prompt": "I en kommun har varje skola antingen en matsal eller serverar maten i klassrummen, men aldrig båda. Ekbackens skola saknar matsal. Skolor som serverar maten i klassrummen har kortare lunchrast än skolor med matsal.\nVilken slutsats kan dras?",
+    "options": [
+      "Eleverna på Ekbackens skola äter i matsalen.",
+      "Ekbackens skola har kortare lunchrast än skolor med matsal.",
+      "Ekbackens skola är kommunens minsta skola.",
+      "Ekbackens skola planerar att bygga en matsal."
+    ],
+    "correct": 1,
+    "explanation": "Utan matsal måste Ekbacken servera maten i klassrummen, och sådana skolor har kortare lunchrast. Övriga alternativ motsägs eller saknar stöd."
+  },
+  {
+    "id": "logik-slutsats-010",
+    "area": "logik",
+    "subtype": "slutsats",
+    "difficulty": 3,
+    "source": "bank",
+    "prompt": "Ett företag har tre avdelningar: ekonomi, IT och försäljning. IT har fler anställda än ekonomi. Försäljning har färre anställda än ekonomi men fler än 10.\nVilken slutsats kan dras?",
+    "options": [
+      "Försäljning är den största avdelningen.",
+      "Ekonomi har exakt 11 anställda.",
+      "Företaget har fler än 50 anställda.",
+      "IT har fler än 10 anställda."
+    ],
+    "correct": 3,
+    "explanation": "Försäljning har minst 11, ekonomi fler än så och IT ännu fler, så IT har klart fler än 10. Totalt kan företaget ha så få som 36 anställda."
+  }
+]

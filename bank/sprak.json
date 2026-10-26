@@ -1,0 +1,674 @@
+[
+  {
+    "id": "sprak-synonym-001",
+    "area": "sprak",
+    "subtype": "synonym",
+    "difficulty": 1,
+    "source": "bank",
+    "prompt": "Vilket ord betyder ungefär samma sak som SNABB?",
+    "options": [
+      "långsam",
+      "stark",
+      "kvick",
+      "tyst",
+      "glad"
+    ],
+    "correct": 2,
+    "explanation": "Snabb och kvick betyder båda att något går fort."
+  },
+  {
+    "id": "sprak-synonym-002",
+    "area": "sprak",
+    "subtype": "synonym",
+    "difficulty": 1,
+    "source": "bank",
+    "prompt": "Vilket ord betyder ungefär samma sak som TRÖTT?",
+    "options": [
+      "utmattad",
+      "pigg",
+      "rädd",
+      "modig",
+      "slarvig"
+    ],
+    "correct": 0,
+    "explanation": "Den som är trött är utmattad och orkar inte mycket."
+  },
+  {
+    "id": "sprak-synonym-003",
+    "area": "sprak",
+    "subtype": "synonym",
+    "difficulty": 2,
+    "source": "bank",
+    "prompt": "Vilket ord betyder ungefär samma sak som FÖRHASTAD?",
+    "options": [
+      "försenad",
+      "förvånad",
+      "förvirrad",
+      "förberedd",
+      "överilad"
+    ],
+    "correct": 4,
+    "explanation": "Förhastad och överilad betyder att något görs för snabbt, utan eftertanke."
+  },
+  {
+    "id": "sprak-synonym-004",
+    "area": "sprak",
+    "subtype": "synonym",
+    "difficulty": 2,
+    "source": "bank",
+    "prompt": "Vilket ord betyder ungefär samma sak som GENOMSKÅDA?",
+    "options": [
+      "genomföra",
+      "avslöja",
+      "förbise",
+      "beundra",
+      "förvirra"
+    ],
+    "correct": 1,
+    "explanation": "Att genomskåda någon är att se igenom och avslöja deras verkliga avsikter."
+  },
+  {
+    "id": "sprak-synonym-005",
+    "area": "sprak",
+    "subtype": "synonym",
+    "difficulty": 2,
+    "source": "bank",
+    "prompt": "Vilket ord betyder ungefär samma sak som EKVIVALENT?",
+    "options": [
+      "ensidig",
+      "tvetydig",
+      "överlägsen",
+      "likvärdig",
+      "oberoende"
+    ],
+    "correct": 3,
+    "explanation": "Ekvivalent betyder likvärdig, dvs. av samma värde eller betydelse."
+  },
+  {
+    "id": "sprak-synonym-006",
+    "area": "sprak",
+    "subtype": "synonym",
+    "difficulty": 3,
+    "source": "bank",
+    "prompt": "Vilket ord betyder ungefär samma sak som OBSTINAT?",
+    "options": [
+      "obegriplig",
+      "osäker",
+      "otydlig",
+      "envis",
+      "oärlig"
+    ],
+    "correct": 3,
+    "explanation": "Obstinat betyder envis och motspänstig."
+  },
+  {
+    "id": "sprak-synonym-007",
+    "area": "sprak",
+    "subtype": "synonym",
+    "difficulty": 3,
+    "source": "bank",
+    "prompt": "Vilket ord betyder ungefär samma sak som PERFID?",
+    "options": [
+      "perfekt",
+      "trolös",
+      "fientlig",
+      "pedantisk",
+      "feg"
+    ],
+    "correct": 1,
+    "explanation": "Perfid betyder lömsk och förrädisk, alltså trolös."
+  },
+  {
+    "id": "sprak-synonym-008",
+    "area": "sprak",
+    "subtype": "synonym",
+    "difficulty": 3,
+    "source": "bank",
+    "prompt": "Vilket ord betyder ungefär samma sak som INDOLENT?",
+    "options": [
+      "ödmjuk",
+      "ovetande",
+      "oförsiktig",
+      "otålig",
+      "slö"
+    ],
+    "correct": 4,
+    "explanation": "Indolent betyder loj, slö och bekväm av sig."
+  },
+  {
+    "id": "sprak-motsats-001",
+    "area": "sprak",
+    "subtype": "motsats",
+    "difficulty": 1,
+    "source": "bank",
+    "prompt": "Vilket ord är motsatsen till GENERÖS?",
+    "options": [
+      "snål",
+      "rik",
+      "vänlig",
+      "modig",
+      "fattig"
+    ],
+    "correct": 0,
+    "explanation": "Den generösa delar gärna med sig; den snåla gör det motsatta."
+  },
+  {
+    "id": "sprak-motsats-002",
+    "area": "sprak",
+    "subtype": "motsats",
+    "difficulty": 1,
+    "source": "bank",
+    "prompt": "Vilket ord är motsatsen till TILLFÄLLIG?",
+    "options": [
+      "kort",
+      "snabb",
+      "bestående",
+      "slumpmässig",
+      "sällsynt"
+    ],
+    "correct": 2,
+    "explanation": "Något tillfälligt varar en kort tid; något bestående varar."
+  },
+  {
+    "id": "sprak-motsats-003",
+    "area": "sprak",
+    "subtype": "motsats",
+    "difficulty": 1,
+    "source": "bank",
+    "prompt": "Vilket ord är motsatsen till OKLAR?",
+    "options": [
+      "mörk",
+      "lätt",
+      "tydlig",
+      "snabb",
+      "kort"
+    ],
+    "correct": 2,
+    "explanation": "Oklar betyder otydlig, så motsatsen är tydlig."
+  },
+  {
+    "id": "sprak-motsats-004",
+    "area": "sprak",
+    "subtype": "motsats",
+    "difficulty": 2,
+    "source": "bank",
+    "prompt": "Vilket ord är motsatsen till ÖVERFLÖD?",
+    "options": [
+      "brist",
+      "överskott",
+      "rikedom",
+      "ordning",
+      "lugn"
+    ],
+    "correct": 0,
+    "explanation": "Överflöd är att det finns för mycket; brist är att det finns för lite."
+  },
+  {
+    "id": "sprak-motsats-005",
+    "area": "sprak",
+    "subtype": "motsats",
+    "difficulty": 2,
+    "source": "bank",
+    "prompt": "Vilket ord är motsatsen till SKEPTISK?",
+    "options": [
+      "misstänksam",
+      "glad",
+      "envis",
+      "osäker",
+      "godtrogen"
+    ],
+    "correct": 4,
+    "explanation": "Den skeptiska tvivlar, medan den godtrogna tror på allt."
+  },
+  {
+    "id": "sprak-motsats-006",
+    "area": "sprak",
+    "subtype": "motsats",
+    "difficulty": 2,
+    "source": "bank",
+    "prompt": "Vilket ord är motsatsen till FÖRSUMMA?",
+    "options": [
+      "glömma",
+      "sköta",
+      "förlora",
+      "fördröja",
+      "försvara"
+    ],
+    "correct": 1,
+    "explanation": "Att försumma något är att missköta det; motsatsen är att sköta det."
+  },
+  {
+    "id": "sprak-motsats-007",
+    "area": "sprak",
+    "subtype": "motsats",
+    "difficulty": 3,
+    "source": "bank",
+    "prompt": "Vilket ord är motsatsen till FLEGMATISK?",
+    "options": [
+      "lugn",
+      "tjock",
+      "sjuklig",
+      "livlig",
+      "förnuftig"
+    ],
+    "correct": 3,
+    "explanation": "Flegmatisk betyder trög och svårrörd; motsatsen är livlig."
+  },
+  {
+    "id": "sprak-motsats-008",
+    "area": "sprak",
+    "subtype": "motsats",
+    "difficulty": 3,
+    "source": "bank",
+    "prompt": "Vilket ord är motsatsen till PROFAN?",
+    "options": [
+      "vardaglig",
+      "offentlig",
+      "professionell",
+      "helig",
+      "grov"
+    ],
+    "correct": 3,
+    "explanation": "Profan betyder världslig, icke-religiös; motsatsen är helig."
+  },
+  {
+    "id": "sprak-ordbetydelse-001",
+    "area": "sprak",
+    "subtype": "ordbetydelse",
+    "difficulty": 1,
+    "source": "bank",
+    "prompt": "Vad betyder ANONYM?",
+    "options": [
+      "mycket känd",
+      "utan känt namn",
+      "ensam",
+      "oförskämd",
+      "främmande"
+    ],
+    "correct": 1,
+    "explanation": "Anonym betyder att namnet inte är känt eller inte anges."
+  },
+  {
+    "id": "sprak-ordbetydelse-002",
+    "area": "sprak",
+    "subtype": "ordbetydelse",
+    "difficulty": 1,
+    "source": "bank",
+    "prompt": "Vad betyder FÖRSUMBAR?",
+    "options": [
+      "mycket viktig",
+      "lätt att glömma bort",
+      "omöjlig att mäta",
+      "ofta förekommande",
+      "så liten att den saknar betydelse"
+    ],
+    "correct": 4,
+    "explanation": "Något försumbart är så litet att man kan bortse från det."
+  },
+  {
+    "id": "sprak-ordbetydelse-003",
+    "area": "sprak",
+    "subtype": "ordbetydelse",
+    "difficulty": 2,
+    "source": "bank",
+    "prompt": "Vad betyder EFTERGIVEN?",
+    "options": [
+      "som lätt ger med sig och inte ställer krav",
+      "som kommer i efterhand",
+      "som har gett upp hoppet",
+      "som är skuldsatt",
+      "som är mycket noggrann"
+    ],
+    "correct": 0,
+    "explanation": "En eftergiven person ger lätt efter, t.ex. en förälder som inte sätter gränser."
+  },
+  {
+    "id": "sprak-ordbetydelse-004",
+    "area": "sprak",
+    "subtype": "ordbetydelse",
+    "difficulty": 2,
+    "source": "bank",
+    "prompt": "Vad betyder KONSENSUS?",
+    "options": [
+      "en folkräkning",
+      "en sammanfattning",
+      "allmän enighet",
+      "ett löneavtal",
+      "en åsiktsskillnad"
+    ],
+    "correct": 2,
+    "explanation": "Konsensus betyder att alla i en grupp är överens."
+  },
+  {
+    "id": "sprak-ordbetydelse-005",
+    "area": "sprak",
+    "subtype": "ordbetydelse",
+    "difficulty": 2,
+    "source": "bank",
+    "prompt": "Vad betyder PRAGMATISK?",
+    "options": [
+      "noggrann med regler",
+      "rent teoretisk",
+      "inriktad på det praktiskt genomförbara",
+      "mycket pratsam",
+      "överdrivet försiktig"
+    ],
+    "correct": 2,
+    "explanation": "Pragmatisk betyder att man fokuserar på vad som fungerar i praktiken."
+  },
+  {
+    "id": "sprak-ordbetydelse-006",
+    "area": "sprak",
+    "subtype": "ordbetydelse",
+    "difficulty": 3,
+    "source": "bank",
+    "prompt": "Vad betyder PREKÄR?",
+    "options": [
+      "osäker och besvärlig, riskfylld",
+      "mycket exakt",
+      "förberedd i förväg",
+      "dyrbar och sällsynt",
+      "tillfälligt avstängd"
+    ],
+    "correct": 0,
+    "explanation": "En prekär situation är osäker och vansklig."
+  },
+  {
+    "id": "sprak-ordbetydelse-007",
+    "area": "sprak",
+    "subtype": "ordbetydelse",
+    "difficulty": 3,
+    "source": "bank",
+    "prompt": "Vad betyder LAKONISK?",
+    "options": [
+      "lat och slö",
+      "sorgsen och dyster",
+      "lugn och fridfull",
+      "omständlig och detaljerad",
+      "kortfattad och träffande"
+    ],
+    "correct": 4,
+    "explanation": "Lakonisk betyder kort och koncis, med få ord."
+  },
+  {
+    "id": "sprak-ordbetydelse-008",
+    "area": "sprak",
+    "subtype": "ordbetydelse",
+    "difficulty": 3,
+    "source": "bank",
+    "prompt": "Vad betyder OBSOLET?",
+    "options": [
+      "besatt av en tanke",
+      "föråldrad, inte längre i bruk",
+      "fullständig och absolut",
+      "förbjuden enligt lag",
+      "svår att upptäcka"
+    ],
+    "correct": 1,
+    "explanation": "Obsolet betyder föråldrad och ur bruk."
+  },
+  {
+    "id": "sprak-grammatik-001",
+    "area": "sprak",
+    "subtype": "grammatik",
+    "difficulty": 1,
+    "source": "bank",
+    "prompt": "Välj rätt ord: \"Han ___ boken igår.\"",
+    "options": [
+      "läser",
+      "läste",
+      "läst",
+      "läsa"
+    ],
+    "correct": 1,
+    "explanation": "Igår kräver preteritum: läste."
+  },
+  {
+    "id": "sprak-grammatik-002",
+    "area": "sprak",
+    "subtype": "grammatik",
+    "difficulty": 1,
+    "source": "bank",
+    "prompt": "Välj rätt ord: \"Hon är två år ___ än sin bror.\"",
+    "options": [
+      "äldst",
+      "mer gammal",
+      "gammalare",
+      "äldre"
+    ],
+    "correct": 3,
+    "explanation": "Komparativ av gammal är äldre (oregelbunden böjning)."
+  },
+  {
+    "id": "sprak-grammatik-003",
+    "area": "sprak",
+    "subtype": "grammatik",
+    "difficulty": 1,
+    "source": "bank",
+    "prompt": "Välj rätt ord: \"___ bor din syster nuförtiden?\"",
+    "options": [
+      "Var",
+      "Vart",
+      "Varthän",
+      "Varav"
+    ],
+    "correct": 0,
+    "explanation": "Var används om befintlighet (plats); vart om riktning."
+  },
+  {
+    "id": "sprak-grammatik-004",
+    "area": "sprak",
+    "subtype": "grammatik",
+    "difficulty": 2,
+    "source": "bank",
+    "prompt": "Välj rätt ord: \"Hon har ___ ett långt brev till sin mormor.\"",
+    "options": [
+      "skrivet",
+      "skriven",
+      "skrivit",
+      "skrev"
+    ],
+    "correct": 2,
+    "explanation": "Efter har används supinum: skrivit. Skrivet/skriven är particip."
+  },
+  {
+    "id": "sprak-grammatik-005",
+    "area": "sprak",
+    "subtype": "grammatik",
+    "difficulty": 2,
+    "source": "bank",
+    "prompt": "Välj rätt ord: \"Mannen ___ hund skällde hela natten har flyttat.\"",
+    "options": [
+      "vems",
+      "vars",
+      "som",
+      "vilket"
+    ],
+    "correct": 1,
+    "explanation": "Vars är det relativa ägandeordet (mannen vars hund); vems används i frågor."
+  },
+  {
+    "id": "sprak-grammatik-006",
+    "area": "sprak",
+    "subtype": "grammatik",
+    "difficulty": 3,
+    "source": "bank",
+    "prompt": "Välj rätt ord: \"Han hade ___ i sängen hela dagen.\"",
+    "options": [
+      "ligat",
+      "lagt",
+      "lagat",
+      "legat"
+    ],
+    "correct": 3,
+    "explanation": "Supinum av ligga är legat. Lagt kommer av lägga och lagat av laga."
+  },
+  {
+    "id": "sprak-grammatik-007",
+    "area": "sprak",
+    "subtype": "grammatik",
+    "difficulty": 3,
+    "source": "bank",
+    "prompt": "Välj rätt ord: \"Pelle och ___ fru kom sent till festen.\"",
+    "options": [
+      "hans",
+      "sin",
+      "sitt",
+      "sina"
+    ],
+    "correct": 0,
+    "explanation": "Sin kan inte stå i satsens subjekt, så det heter Pelle och hans fru."
+  },
+  {
+    "id": "sprak-grammatik-008",
+    "area": "sprak",
+    "subtype": "grammatik",
+    "difficulty": 3,
+    "source": "bank",
+    "prompt": "Välj rätt ord: \"Ingen av eleverna hade gjort ___ egen läxa.\"",
+    "options": [
+      "sina",
+      "hans",
+      "sin",
+      "deras"
+    ],
+    "correct": 2,
+    "explanation": "Ingen är singular subjekt, så det reflexiva sin ska användas (sin läxa)."
+  },
+  {
+    "id": "sprak-analogi-001",
+    "area": "sprak",
+    "subtype": "analogi",
+    "difficulty": 1,
+    "source": "bank",
+    "prompt": "Ko förhåller sig till kalv som häst förhåller sig till ?",
+    "options": [
+      "sto",
+      "hingst",
+      "lamm",
+      "föl",
+      "kid"
+    ],
+    "correct": 3,
+    "explanation": "En kalv är kons unge och ett föl är hästens unge."
+  },
+  {
+    "id": "sprak-analogi-002",
+    "area": "sprak",
+    "subtype": "analogi",
+    "difficulty": 1,
+    "source": "bank",
+    "prompt": "Fisk förhåller sig till simma som fågel förhåller sig till ?",
+    "options": [
+      "hoppa",
+      "sjunga",
+      "bygga",
+      "flyga",
+      "springa"
+    ],
+    "correct": 3,
+    "explanation": "Fisken förflyttar sig genom att simma, fågeln genom att flyga."
+  },
+  {
+    "id": "sprak-analogi-003",
+    "area": "sprak",
+    "subtype": "analogi",
+    "difficulty": 1,
+    "source": "bank",
+    "prompt": "Varm förhåller sig till kall som ljus förhåller sig till ?",
+    "options": [
+      "lampa",
+      "mörk",
+      "sol",
+      "blek",
+      "klar"
+    ],
+    "correct": 1,
+    "explanation": "Paret är motsatser: varm–kall, ljus–mörk."
+  },
+  {
+    "id": "sprak-analogi-004",
+    "area": "sprak",
+    "subtype": "analogi",
+    "difficulty": 2,
+    "source": "bank",
+    "prompt": "Penna förhåller sig till skriva som sax förhåller sig till ?",
+    "options": [
+      "papper",
+      "vass",
+      "sy",
+      "rita",
+      "klippa"
+    ],
+    "correct": 4,
+    "explanation": "Ett verktyg och dess funktion: pennan skriver, saxen klipper."
+  },
+  {
+    "id": "sprak-analogi-005",
+    "area": "sprak",
+    "subtype": "analogi",
+    "difficulty": 2,
+    "source": "bank",
+    "prompt": "Lärare förhåller sig till elev som tränare förhåller sig till ?",
+    "options": [
+      "spelare",
+      "match",
+      "domare",
+      "boll",
+      "arena"
+    ],
+    "correct": 0,
+    "explanation": "Läraren undervisar eleven; tränaren tränar spelaren."
+  },
+  {
+    "id": "sprak-analogi-006",
+    "area": "sprak",
+    "subtype": "analogi",
+    "difficulty": 3,
+    "source": "bank",
+    "prompt": "Sällsynt förhåller sig till vanlig som flyktig förhåller sig till ?",
+    "options": [
+      "snabb",
+      "lätt",
+      "bestående",
+      "rädd",
+      "ovanlig"
+    ],
+    "correct": 2,
+    "explanation": "Paret är motsatser: flyktig (kortvarig) är motsatsen till bestående."
+  },
+  {
+    "id": "sprak-analogi-007",
+    "area": "sprak",
+    "subtype": "analogi",
+    "difficulty": 3,
+    "source": "bank",
+    "prompt": "Gram förhåller sig till vikt som decibel förhåller sig till ?",
+    "options": [
+      "ljus",
+      "avstånd",
+      "ljudnivå",
+      "tryck",
+      "temperatur"
+    ],
+    "correct": 2,
+    "explanation": "Gram är en enhet för vikt och decibel en enhet för ljudnivå."
+  },
+  {
+    "id": "sprak-analogi-008",
+    "area": "sprak",
+    "subtype": "analogi",
+    "difficulty": 3,
+    "source": "bank",
+    "prompt": "Sparsam förhåller sig till snål som modig förhåller sig till ?",
+    "options": [
+      "dumdristig",
+      "feg",
+      "stark",
+      "tapper",
+      "ärlig"
+    ],
+    "correct": 0,
+    "explanation": "Snål är en överdriven, negativ form av sparsam; dumdristig är en överdriven form av modig."
+  }
+]
