@@ -5,7 +5,7 @@ import { mulberry32, randInt, shuffle } from "./rng.js";
 import { generate } from "./generators/index.js";
 
 export const MODES = {
-  full: { count: 80, timeLimitS: 1800, label: "Fullt test" },
+  full: { count: 80, timeLimitS: 1800, label: "Fullt test (gammalt format)" },
   quick: { count: 20, timeLimitS: 450, label: "Snabbrunda" },
   weak: { count: 20, timeLimitS: null, label: "Träna svagheter" },
   drill: { count: 15, timeLimitS: null, label: "Ämnesdrill" },
@@ -15,7 +15,11 @@ export const MODES = {
 
 // Utmaning: only the hardest level, weighted toward the language-independent areas
 // that the adaptive JobMatch LogiQ escalates in.
-const CHALLENGE_QUOTA = { uppfattning: 6, matte: 6, komplex: 4, logik: 4 };
+const CHALLENGE_QUOTA = { uppfattning: 8, matte: 6, komplex: 6 };
+
+// JobMatch LogiQ is language-free: figures, numbers and complex problems only.
+export const LOGIQ_AREAS = ["uppfattning", "matte", "komplex"];
+const QUICK_QUOTA = { uppfattning: 8, matte: 8, komplex: 4 };
 
 export function buildRound({ mode, bank, seed, subtypeWeights = null, filter = null, recentIds = new Set() }) {
   const rand = mulberry32(seed);
@@ -62,11 +66,12 @@ export function buildRound({ mode, bank, seed, subtypeWeights = null, filter = n
   if (mode === "full" || mode === "quick") {
     // The full test ends with a hard quarter (level 4), like a test that gets harder towards the end.
     const levels = mode === "full" ? 4 : 3;
-    const perArea = count / AREAS.length;
-    for (const area of AREAS) {
+    // Fullt test keeps the old five-area format; Snabbrunda is language-free like LogiQ.
+    const quota = mode === "full" ? Object.fromEntries(AREAS.map((a) => [a, count / AREAS.length])) : QUICK_QUOTA;
+    for (const [area, n] of Object.entries(quota)) {
       const subs = shuffle(rand, subtypesOf(area).filter(available));
-      for (let i = 0; i < perArea; i++) {
-        const q = takeWithFallback(subs[i % subs.length], levelFor(i, perArea, levels));
+      for (let i = 0; i < n; i++) {
+        const q = takeWithFallback(subs[i % subs.length], levelFor(i, n, levels));
         if (q) out.push(q);
       }
     }
@@ -107,7 +112,7 @@ export function buildRound({ mode, bank, seed, subtypeWeights = null, filter = n
   } else {
     const w = subtypeWeights ?? {};
     for (let i = 0; i < count; i++) {
-      const cands = Object.keys(SUBTYPES).filter(available);
+      const cands = Object.keys(SUBTYPES).filter((k) => LOGIQ_AREAS.includes(SUBTYPES[k].area) && available(k));
       const total = cands.reduce((s, k) => s + (w[k] ?? 1), 0);
       let r = rand() * total, st = cands[0];
       for (const k of cands) { r -= w[k] ?? 1; if (r <= 0) { st = k; break; } }

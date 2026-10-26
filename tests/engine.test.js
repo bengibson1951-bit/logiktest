@@ -36,10 +36,10 @@ test("full round: 80, 16 per area, no duplicates, rising difficulty", () => {
   for (let i = 1; i < qs.length; i++) assert.ok(qs[i].difficulty >= qs[i - 1].difficulty);
 });
 
-test("quick round: 20 with 4 per area", () => {
+test("quick round: 20, language-free (8 figures, 8 numbers, 4 complex)", () => {
   const qs = buildRound({ mode: "quick", bank: fixtureBank(), seed: 2 });
   assert.equal(qs.length, 20);
-  for (const a of AREAS) assert.equal(qs.filter((q) => q.area === a).length, 4);
+  assert.deepEqual([qs.filter((q) => q.area === "uppfattning").length, qs.filter((q) => q.area === "matte").length, qs.filter((q) => q.area === "komplex").length], [8, 8, 4]);
 });
 
 test("drill restricted to subtype", () => {
@@ -54,12 +54,14 @@ test("drill by area with a small bank does not duplicate", () => {
   assert.ok(qs.every((q) => q.area === "sprak"));
 });
 
-test("weak mode follows weights", () => {
+test("weak mode follows weights and stays language-free", () => {
   const w = Object.fromEntries(Object.keys(SUBTYPES).map((k) => [k, 0.15]));
-  w.syllogism = 10;
+  w.placering = 10;
+  w.syllogism = 50;
   const qs = buildRound({ mode: "weak", bank: fixtureBank(), seed: 1, subtypeWeights: w });
   assert.equal(qs.length, 20);
-  assert.ok(qs.filter((q) => q.subtype === "syllogism").length >= 8);
+  assert.ok(qs.filter((q) => q.subtype === "placering").length >= 6);
+  assert.ok(qs.every((q) => q.area !== "sprak" && q.area !== "logik"));
 });
 
 test("recent ids avoided while fresh ones remain", () => {
@@ -78,8 +80,8 @@ test("challenge: 20 hard questions, no language area, generated ones at level 4"
   bank.push({ ...bank.find((q) => q.subtype === "placering"), id: "komplex-placering-hard", difficulty: 4 });
   const qs = buildRound({ mode: "challenge", bank, seed: 9 });
   assert.equal(qs.length, 20);
-  assert.ok(qs.every((q) => q.area !== "sprak"));
-  assert.equal(qs.filter((q) => q.area === "uppfattning").length, 6);
+  assert.ok(qs.every((q) => q.area !== "sprak" && q.area !== "logik"));
+  assert.equal(qs.filter((q) => q.area === "uppfattning").length, 8);
   assert.ok(qs.filter((q) => q.source === "generated").every((q) => q.difficulty === 4));
   assert.ok(qs.some((q) => q.id === "komplex-placering-hard"));
 });

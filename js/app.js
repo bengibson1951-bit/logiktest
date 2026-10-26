@@ -5,14 +5,14 @@ import { AREAS, AREA_LABELS, SUBTYPES, subtypesOf } from "./taxonomy.js";
 import { createDb } from "./db.js";
 import { createOutbox } from "./outbox.js";
 import { loadBank } from "./bank.js";
-import { MODES, buildRound, buildLogiq, LOGIQ_VERSIONS } from "./engine.js";
+import { MODES, buildRound, buildLogiq, LOGIQ_VERSIONS, LOGIQ_AREAS } from "./engine.js";
 import { newRound, recordAnswer, recordSkip, timeUp } from "./round.js";
 import { createStopwatch } from "./timer.js";
 import { roundMetrics, subtypeStats, flags, weights, targetSeconds, blockMetrics, overallEfficiency, FLAG_LABELS, TARGET_S } from "./metrics.js";
 import { renderFigure, renderCell } from "./svg.js";
 import { load, save, setResume, clearResume, addRecent } from "./store.js";
 
-const CLIENT_VERSION = "1.3.0";
+const CLIENT_VERSION = "1.4.0";
 const SKIP_NUDGE_MS = 30000;
 const app = document.getElementById("app");
 const db = createDb({ url: SUPABASE_URL, anonKey: SUPABASE_ANON_KEY });
@@ -109,7 +109,7 @@ function showHome() {
   const r = state.resume;
   screen(`
     <div class="row spread"><h1>Logikträning</h1><span class="pill">${esc(deadlineText())}</span></div>
-    <p class="muted">Träning inför JobMatch Logic: 80 blandade frågor på 30 minuter.</p>
+    <p class="muted">Träning inför JobMatch LogiQ: figurer, tal och problemlösning – där tiden räknas.</p>
     ${r ? `<div class="card"><div class="row spread"><div><strong>Fortsätt där du var</strong><br><span class="muted small">${esc(MODES[r.mode].label)} · fråga ${r.position + 1} av ${r.questions.length}${r.remainingMs != null ? ` · ${mmss(r.remainingMs)} kvar` : ""}</span></div>
       <div class="row"><button id="discard" class="link">Släng</button><button id="resume" class="primary">Fortsätt</button></div></div></div>` : ""}
     ${last ? `<div class="card"><div class="row spread"><strong>Senaste: ${esc(MODES[last.mode].label)}</strong><span class="muted small">${new Date(last.endedAt).toLocaleString("sv-SE", { dateStyle: "short", timeStyle: "short" })}</span></div>
@@ -119,22 +119,23 @@ function showHome() {
         <div><div class="stat">${secs(last.metrics.medianS)}</div><div class="stat-label">Median per fråga (mål ${TARGET_S} s)</div></div>
       </div></div>` : ""}
     <div class="grid2">
-      <button class="big" id="logiq"><strong>LogiQ-simulering</strong><span class="muted small">3 × 20 frågor · tiden räknas · troligast likt riktiga testet</span></button>
-      <button class="big" data-mode="full"><strong>Fullt test</strong><span class="muted small">80 frågor · 30 min · som riktiga testet</span></button>
-      <button class="big" data-mode="quick"><strong>Snabbrunda</strong><span class="muted small">20 frågor · 7½ min · daglig uppvärmning</span></button>
+      <button class="big primary-card" id="logiq"><strong>LogiQ-simulering</strong><span class="muted small">3 block × 20 frågor · tiden räknas · närmast det riktiga testet</span></button>
+      <button class="big" data-mode="quick"><strong>Snabbrunda</strong><span class="muted small">20 frågor · 7½ min · figurer, tal och problemlösning</span></button>
       <button class="big" data-mode="weak"><strong>Träna svagheter</strong><span class="muted small">20 frågor från dina långsammaste och svagaste typer</span></button>
+      <button class="big" data-mode="challenge"><strong>Utmaning</strong><span class="muted small">20 svåra frågor · 10 min · avancerad logik</span></button>
       <button class="big" id="drill"><strong>Ämnesdrill</strong><span class="muted small">Välj en frågetyp och nöt den</span></button>
-      <button class="big" data-mode="challenge"><strong>Utmaning</strong><span class="muted small">20 svåra frågor · 10 min · figurer, tal och avancerad logik</span></button>
     </div>
-    <p style="margin-top:12px"><button class="link" id="stats">Statistik och utveckling →</button></p>
+    <p style="margin-top:12px" class="row spread"><button class="link" id="stats">Statistik och utveckling →</button>
+      <button class="link muted small" data-mode="full">Gammalt format: JobMatch Logic, 80 frågor · 30 min (inkl. språk)</button></p>
     <div class="card">
-      <h2>Strategi</h2>
+      <h2>Strategi inför JobMatch LogiQ</h2>
       <ul class="tips">
-        <li><strong>Takt:</strong> ca ${TARGET_S} sekunder per fråga. Nästan ingen hinner alla 80 – det är både antal svar och andel rätt som räknas.</li>
-        <li><strong>Fastnar du?</strong> Hoppa efter ca 30 sekunder. En överhoppad fråga kostar mindre än tre minuters grubblande.</li>
-        <li><strong>Läs en gång</strong>, svara, gå vidare. Läs inte om frågan i onödan.</li>
-        <li><strong>Kolla instruktionerna</strong> i riktiga testet: går det att gå tillbaka till överhoppade frågor?</li>
-        <li><strong>Sant / Falskt / Möjligt / Osannolikt:</strong> Sant = följer säkert av påståendena. Falskt = motsägs säkert. Möjligt = kan stämma men bevisas inte. Osannolikt = påståendena (t.ex. "de flesta", "få") gör det osannolikt men utesluter det inte.</li>
+        <li><strong>Tiden räknas in i poängen.</strong> Det finns ingen tidsgräns, men poängen bygger på rätta svar per tidsenhet. Snabbt och rätt slår långsamt och perfekt.</li>
+        <li><strong>Takt:</strong> ca 15–17 s per fråga i det numeriska blocket, ca 20–30 s i logik och komplex problemlösning.</li>
+        <li><strong>Fastnar du?</strong> Gissa smart eller hoppa – en fråga som tar tre minuter sänker poängen mer än ett fel.</li>
+        <li><strong>Inga pauser</strong> mitt i riktiga testet. Gör det utvilad, ostörd och med laddad dator.</li>
+        <li><strong>Läs instruktionerna</strong> innan du startar: antal frågor, och om man kan gå tillbaka.</li>
+        <li>JobMatch Talent (personlighetstestet) har inga rätta svar – svara ärligt och utan att övertänka.</li>
         <li>Här: tangenterna <strong>1–5</strong> svarar direkt, <strong>S</strong> eller <strong>→</strong> hoppar över.</li>
       </ul>
     </div>
@@ -206,8 +207,8 @@ function showDrillPicker() {
     <p><button class="link" id="back">← Tillbaka</button></p>
     <h1>Ämnesdrill</h1>
     <p class="muted">15 frågor av en typ, med en tidsmålstapel per fråga.</p>
-    ${AREAS.map((a) => `
-      <div class="card"><div class="row spread"><h2 style="margin:0">${esc(AREA_LABELS[a])}</h2><button data-area="${a}">Hela området</button></div>
+    ${[...LOGIQ_AREAS, ...AREAS.filter((x) => !LOGIQ_AREAS.includes(x))].map((a) => `
+      <div class="card"><div class="row spread"><h2 style="margin:0">${esc(AREA_LABELS[a])}${LOGIQ_AREAS.includes(a) ? "" : ` <span class="pill">gammalt format</span>`}</h2><button data-area="${a}">Hela området</button></div>
       <div class="row" style="margin-top:10px">${subtypesOf(a).map((s) => `<button data-sub="${s}">${esc(SUBTYPES[s].label)}</button>`).join("")}</div></div>`).join("")}`);
   document.getElementById("back").addEventListener("click", showHome);
   app.querySelectorAll("[data-area]").forEach((b) => b.addEventListener("click", () => startMode("drill", { area: b.dataset.area })));
